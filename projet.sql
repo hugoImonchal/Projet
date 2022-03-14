@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 06, 2022 at 10:43 PM
+-- Generation Time: Mar 14, 2022 at 12:38 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
@@ -93,8 +93,15 @@ CREATE TABLE `film` (
   `Annee` int(11) DEFAULT NULL,
   `Note_IMBD` int(11) DEFAULT NULL,
   `Note_utilisateur` int(11) DEFAULT NULL,
-  `Affiche` varchar(50) DEFAULT NULL
+  `Affiche` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `film`
+--
+
+INSERT INTO `film` (`IdFilm`, `Titre`, `Realisateur`, `Annee`, `Note_IMBD`, `Note_utilisateur`, `Affiche`) VALUES
+(1, 'TEST', 'Groupe 8', 2022, 10, 100, 'https://th.bing.com/th/id/R.2bc86aa255fee92d6bbb4753ef3897d7?rik=NDW2cy9CZs90Gg&pid=ImgRaw&r=0');
 
 -- --------------------------------------------------------
 
@@ -147,6 +154,13 @@ CREATE TABLE `utilisateur` (
   `Mdp` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`pseudo`, `nom`, `prenom`, `age`, `Est_moderateur`, `Email`, `Description`, `Mdp`) VALUES
+('azerty', 'Monchal', 'Hugo', '+18ans', 0, 'azertyuiop', 'Decrivez vous', 'azerty'),
+('azertyyyyy', 'monch', 'Hugo', '-10ans', 0, 'azert', 'Decrivez vous', 'qsdf');
 
 --
 -- Indexes for dumped tables
