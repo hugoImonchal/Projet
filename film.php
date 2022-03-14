@@ -1,5 +1,5 @@
 <?php
-include 'php/bd.php';
+include 'php/bdd.php';
 $bdd = getBD();
 $id = $_GET['id'];
 $req = $bdd->prepare('SELECT * FROM film WHERE id = :id');
