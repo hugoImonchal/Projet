@@ -35,7 +35,7 @@ content="text/html; charset=UTF-8" />
 					
 				?>
 
-<h2><a href="indexx.html" target="_blank"> Accueil </a></h2>
+<h2><a href="index.html" target="_blank"> Accueil </a></h2>
 
 </body>
 </html>
