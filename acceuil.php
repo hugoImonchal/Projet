@@ -3,7 +3,7 @@ include 'php/bdd.php';
 $bd = getBD();
 $sql = "SELECT * FROM `film`";
 $result = $bd->query($sql);
-$films = $result->fetchAll(PDO::FETCH_ASSOC);
+$filmes = $result->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
@@ -26,7 +26,7 @@ $films = $result->fetchAll(PDO::FETCH_ASSOC);
                 <th>Note</th>
             </tr>
             <?php
-            foreach ($films as $film) {
+            foreach ($filmes as $film) {
                 echo "<tr>";
                 echo "<td><a href='film.php?IdFilm=" . $film['IdFilm'] . "'>" . $film['Titre'] . "</a></td>";
                 echo '<td>' . $film['IdFilm'] . '</td>';
