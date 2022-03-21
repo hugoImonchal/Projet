@@ -34,6 +34,7 @@ else{$ispseudo=1;}
 </head>
 <body>
 <form action="formulaire.php" method="POST" autocomplete="off">
+
     <p>
 <?php 
 echo '
