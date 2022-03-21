@@ -1,74 +1,8 @@
 <html>
 <head>
 	<title>api</title>
-</head>
-<body>
+
 <?php
-
-// $curl = curl_init();
-
-// curl_setopt_array($curl, [
-// 	CURLOPT_URL => "https://gowatch.p.rapidapi.com/lookup/title/imdb_id", //https://api.themoviedb.org/3/movie/550/watch/providers?api_key=afe11092f8476b76ad23859a7747a304
-// 	CURLOPT_RETURNTRANSFER => true,
-// 	CURLOPT_FOLLOWLOCATION => true,
-// 	CURLOPT_ENCODING => "",
-// 	CURLOPT_MAXREDIRS => 10,
-// 	CURLOPT_TIMEOUT => 30,
-// 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-// 	CURLOPT_CUSTOMREQUEST => "POST",
-// 	CURLOPT_POSTFIELDS => "id=tt6751668&type=movie&country=us",
-// 	CURLOPT_HTTPHEADER => [
-// 		"content-type: application/x-www-form-urlencoded",
-// 		"x-rapidapi-host: gowatch.p.rapidapi.com",
-// 		"x-rapidapi-key: f1ff9ba9edmshb6eda89bcfcd97cp1d323fjsn2c4686115408"
-// 	],
-//     CURLOPT_SSL_VERIFYPEER => false
-// ]);
-
-// $response = curl_exec($curl);
-// $err = curl_error($curl);
-
-// curl_close($curl);
-
-// if ($err) {
-// 	echo "cURL Error #:" . $err;
-// } else {
-// 	echo $response;
-// }
-
-
-
-// $curl = curl_init();
-
-// curl_setopt_array($curl, [
-// 	CURLOPT_URL => "https://streaming-availability.p.rapidapi.com/search/basic?country=fr&service=netflix&type=movie&output_language=en",
-// 	CURLOPT_RETURNTRANSFER => true,
-// 	CURLOPT_FOLLOWLOCATION => true,
-// 	CURLOPT_ENCODING => "",
-// 	CURLOPT_MAXREDIRS => 10,
-// 	CURLOPT_TIMEOUT => 30,
-// 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-// 	CURLOPT_CUSTOMREQUEST => "GET",
-// 	CURLOPT_HTTPHEADER => [
-// 		"x-rapidapi-host: streaming-availability.p.rapidapi.com",
-// 		"x-rapidapi-key: f1ff9ba9edmshb6eda89bcfcd97cp1d323fjsn2c4686115408"
-// 	],
-// 	CURLOPT_SSL_VERIFYPEER => false
-
-// ]);
-
-// $response = curl_exec($curl);
-// $err = curl_error($curl);
-
-// curl_close($curl);
-
-// if ($err) {
-// 	echo "cURL Error #:" . $err;
-// } else {
-// 	echo $response;
-// }
-
-
 
 include('php/bdd.php');
 
@@ -184,7 +118,7 @@ curl_setopt_array($curl, array(
 		//insertion dans la table etre_disponible qui relie film et genre
 		foreach (range(0,count($r["results"]["FR"]["flatrate"])-1) as $i) {
 			$nom=$r["results"]["FR"]["flatrate"][$i]["provider_name"];
-			echo $nom.$ID;
+			//echo $nom.$ID;
 			$bdd= getBD();
 			$sql="INSERT INTO etre_disponible (IdFilm, Nom_plat) VALUES (?,?)";
 			$bdd->prepare($sql)->execute([$ID,$nom]);	
@@ -229,7 +163,7 @@ curl_setopt_array($curl, array(
 		$note=$r['vote_average'];
 		$ID=$r['id'];
 		$img="https://image.tmdb.org/t/p/w185/".$r['backdrop_path'];
-		echo "<p>".$titre." | ".$date." | ".$descr." | ".$note."</p>";
+		//echo "<p>".$titre."</p>";
 		$bdd= getBD();
 		$sql="INSERT INTO film (IdFilm,Titre,annee,Note_TMDB,description,Affiche) VALUES (?,?,?,?,?,?)";
 		$bdd->prepare($sql)->execute([$ID,$titre,$date,$note,$descr,$img]);
@@ -245,8 +179,42 @@ curl_setopt_array($curl, array(
 	}
 
 }
-enregistrement_film(509);
-?>
+//enregistrement_film(509);
 
+
+//Recuperation des id_TMDB dans le csv
+$filename = '../data/TMDB_10000_Popular_Movies.csv';
+$data = [];
+
+// open the file
+$f = fopen($filename, 'r');
+
+if ($f === false) {
+	die('Cannot open the file ' . $filename);
+}
+
+// read each line in CSV file at a time
+while (($row = fgetcsv($f)) !== false) {
+	$data[] = $row[0];
+
+}
+// close the file
+fclose($f);
+$var=$_GET['var'];
+$var2=$var+5;
+for ($i = $var; $i <= $var2; $i++) {
+    $id_film=$data[$i];
+	enregistrement_film($id_film);
+	sleep(0.3);
+}
+
+?>
+</head>
+
+<body>
+	<?php
+	echo "<p> Ids actuels: ".$var." a ".$var2."</p>";
+	?>
 </body>
+
 </html>
