@@ -22,7 +22,6 @@ content="text/html; charset=UTF-8" />
 		echo 'Bonjour' .' ';
 		 echo $_SESSION['nom'] .' ';
 		 echo $_SESSION['prenom'] .'<br/>';
-         echo ' ' .'vous êtes connécté(e)';
 		 echo "<h2><a href="."deconnexion.php".">Se déconnecter</a></h2>"."<br/>";
 	}
 	else 
