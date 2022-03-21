@@ -32,8 +32,10 @@ content="text/html; charset=UTF-8" />
 
 	<header class="main">	
 		<nav>
-			<h1 id="logo" >Where2Watch </h1>
 			<ul class="menu">
+			<li>
+				<a href="index.php">Where2Watch</a>
+				</li>
 				<li>
 				<a href="acceuil.php">Accueil</a>
 				</li>

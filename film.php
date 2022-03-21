@@ -50,12 +50,15 @@ content="text/html; charset=UTF-8" />
 				$id= $_GET['IdFilm'];
 
 			$rep = $bdd->query("select * from film where IdFilm=$id ");
-
+			
 			while ($mat =$rep->fetch()) 
 			{
 				echo   "<img src= ".$mat['Affiche']. " alt= 'image' " ."/>";
 				echo $mat['Titre']."<br/>" ;
 				echo $mat['Realisateur']."<br/>"; 
+				echo $mat['annee']."<br/>";
+				echo $mat['Note_TMBD']."<br/>";
+				echo $mat['description']."<br/>"; 
 				
 			  
 			}
