@@ -30,8 +30,9 @@ while ($ligne =$rep ->fetch())
  if($_POST['pseudo']=='' || $_POST['mdp']=='')
 {
    echo '<meta http-equiv="refresh" content="0;url=connexion.php"/>'; 
+   // echo 'veuillez remplir tous les champs';
 }
-else if( $ligne['pseudo']!=$_POST['pseudo'] || $ligne['mdp']!=$_POST['confmdp'] )
+else if( $ligne['pseudo']!=$_POST['pseudo'] || $ligne['mdp']!=$_POST['mdp'] )
 {
  echo 'Mauvais identifiant ou mauvais mot de passe';
 }
@@ -41,8 +42,14 @@ else
        $ligne['pseudo'],
        $ligne['nom'],
        $ligne['prenom'],
-       $ligne['email'],
-       $ligne['mdp']);
+       $ligne['age'],
+       $ligne['est_moderateur']
+       $ligne['email']
+       $ligne['description']
+       $ligne['mdp']
+      
+      
+      );
 	   
     $_SESSION['nom']= $ligne['nom'];
     $_SESSION['prenom']= $ligne['prenom'];
