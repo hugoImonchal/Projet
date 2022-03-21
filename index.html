@@ -12,7 +12,24 @@ content="text/html; charset=UTF-8" />
 
 <body>
 
-
+	<?php
+	if(isset($_SESSION['client']))
+	{ 
+		echo 'Bonjour' .' ';
+		 echo $_SESSION['nom'] .' ';
+		 echo $_SESSION['prenom'] .'<br/>';
+		 echo "<h2><a href="."deconnexion.php".">Se déconnecter</a></h2>"."<br/>";
+		 echo "<h2><a href="."panier.php".">Mon panier</a></h2>"."<br/>";
+		// echo "<a href="."article/article.php".">acheter</a>"."<br/>";
+	}
+	else 
+	{  
+		echo 'Pas connecté(e)'.'<br/>';	
+		echo "<h2><a href="."nouveau.php".">Nouveau client</a></h2>"."<br/>";
+		echo "<h2><a href="."connexion.php".">Se connecter</a></h2>"."<br/>";
+		
+	}
+	?> 
 
 	<header class="main">	
 		<nav>
@@ -22,7 +39,7 @@ content="text/html; charset=UTF-8" />
 				<a href="acceuil.php">Accueil</a>
 				</li>
 				<li>
-				<a href="connexion.html">Connexion</a>
+				<a href="connexion.php">Connexion</a>
 				</li>
 				<li>
 				<a href="FormulaireInscription.php">Inscription</a>

@@ -1,15 +1,45 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="stylesheet" href="../styles/stylearticles.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
 
 <meta http-equiv="Content-Type"
 content="text/html; charset=UTF-8" />
 <title>Film</title>
+<header class="main">	
+		<nav>
+			<ul class="menu">
+			<li>
+				<a href="index.php"> Where2Watch</a>
+				</li>
+				<li>
+				<a href="acceuil.php">Accueil</a>
+				</li>
+				<?php
+				if(isset($_SESSION['utili'])){
+					echo '<li> <a href="deconnexion.php">Deconnexion </a> </li>';
+					echo '<li> <a href"profil.php"> Profil </a> </li>';
+				}
+				else{
+				echo '<li> <a href="connexion.php"> Connexion </a> </li> ';
+				echo '<li> <a href="FormulaireInscription.php"> Inscription </a> </li>';} ?>
+				
+				<li>
+				<a href="contact/contact.php">Contact</a>
+				</li>
+				
+			</ul>
+		</nav>
+	</header>
 </head>
 
-<body>
 
+<body>
+<br>
+<br>
+<br>
+<br>
 <h1>Film</h1>
 
 <br />
@@ -35,7 +65,7 @@ content="text/html; charset=UTF-8" />
 					
 				?>
 
-<h2><a href="index.html" target="_blank"> Accueil </a></h2>
+<h2><a href="acceuil.php" > Retour </a></h2>
 
 </body>
 </html>
