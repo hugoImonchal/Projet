@@ -22,13 +22,10 @@ content="text/html; charset=UTF-8" />
 		echo 'Bonjour' .' ';
 		 echo $_SESSION['nom'] .' ';
 		 echo $_SESSION['prenom'] .'<br/>';
-		 echo "<h2><a href="."deconnexion.php".">Se déconnecter</a></h2>"."<br/>";
 	}
 	else 
 	{  
-		echo 'Vous nêtes pas connecté(e)'.'<br/>';	
-		echo "<h2><a href="."FormulaireInscription.php".">S'inscrire</a></h2>"."<br/>";
-		echo "<h2><a href="."connexion.php".">Se connecter</a></h2>"."<br/>";
+		echo 'Vous nêtes pas connecté(e)'.'<br/>';
 		
 	}
 	?> 
@@ -40,15 +37,19 @@ content="text/html; charset=UTF-8" />
 				<li>
 				<a href="acceuil.php">Accueil</a>
 				</li>
+				<?php
+				if(isset($_SESSION['utili'])){
+					echo '<li> <a href="deconnexion.php">Deconnexion </a> </li>';
+					echo '<li> <a href"profil.php"> Profil </a> </li>';
+				}
+				else{
+				echo '<li> <a href="connexion.php"> Connexion </a> </li> ';
+				echo '<li> <a href="FormulaireInscription.php"> Inscription </a> </li>';} ?>
+				
 				<li>
-				<a href="connexion.php">Connexion</a>
+				<a href="contact/contact.php">Contact</a>
 				</li>
-				<li>
-				<a href="FormulaireInscription.php">Inscription</a>
-				</li>
-				<li>
-				<a href="contact.html">Contact</a>
-				</li>
+				
 			</ul>
 		</nav>
 	</header>
