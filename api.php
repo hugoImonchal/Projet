@@ -1,9 +1,10 @@
 <html>
+
 <head>
 	<title>api</title>
 
 <?php
-
+session_start();
 include('php/bdd.php');
 
 //fonction permettant de remplir la table genre
@@ -182,38 +183,43 @@ curl_setopt_array($curl, array(
 //enregistrement_film(509);
 
 
-//Recuperation des id_TMDB dans le csv
-$filename = '../data/TMDB_10000_Popular_Movies.csv';
-$data = [];
+// Definition de $_SESSION['data'] qui contient la liste des id_TMDB des films
+if(!isset($_SESSION['data'])){
+	//Recuperation des id_TMDB dans le csv
+	$filename = '../data/TMDB_10000_Popular_Movies.csv';
+	$data = [];
+	
+	// open the file
+	$f = fopen($filename, 'r');
+	
+	if ($f === false) {
+		die('Cannot open the file ' . $filename);
+	}
+	
+	// read each line in CSV file at a time
+	while (($row = fgetcsv($f)) !== false) {
+		$data[] = $row[0];	
+	}
+	// close the file
+	fclose($f);
+	$_SESSION['data']=$data;
+}else{$data=$_SESSION['data'];}
 
-// open the file
-$f = fopen($filename, 'r');
-
-if ($f === false) {
-	die('Cannot open the file ' . $filename);
-}
-
-// read each line in CSV file at a time
-while (($row = fgetcsv($f)) !== false) {
-	$data[] = $row[0];
-
-}
-// close the file
-fclose($f);
 $var=$_GET['var'];
-$var2=$var+5;
+$var2=$var+100;
 for ($i = $var; $i <= $var2; $i++) {
     $id_film=$data[$i];
 	enregistrement_film($id_film);
+	echo "<p> Enregistrement effectue:{$id_film}</p>";
 	sleep(0.3);
-}
 
+}
 ?>
 </head>
 
 <body>
 	<?php
-	echo "<p> Ids actuels: ".$var." a ".$var2."</p>";
+	// echo "<p> Ids actuels: ".$var." a ".$var2."</p>";
 	?>
 </body>
 

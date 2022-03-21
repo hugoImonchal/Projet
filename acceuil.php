@@ -72,6 +72,7 @@ session_start();
                         echo '<td>' . $d['Nom_plat'] . '</td>';
                         echo "</tr>";
 
+<<<<<<< HEAD
 
                     
 					}
@@ -82,4 +83,23 @@ session_start();
 			?>
             </tbody>
             
+=======
+    <table>
+            <tr>
+                <th>Titre</th>
+                <th>Id Film</th>
+                <th>Anne</th>
+                <th>Note</th>
+            </tr>
+            <?php
+            foreach ($filmes as $film) {
+                echo "<tr>";
+                echo "<td><a href='film.php?IdFilm=" . $film['IdFilm'] . "'>" . $film['Titre'] . "</a></td>";
+                echo '<td>' . $film['IdFilm'] . '</td>';
+                echo '<td>' . $film['annee'] . '</td>';
+                echo '<td>' . $film['Note_TMDB'] . '</td>';
+                echo "</tr>";
+            }
+            ?>
+>>>>>>> 1f732f3e54864d46515ac94c5734bc6931658660
         </table>
