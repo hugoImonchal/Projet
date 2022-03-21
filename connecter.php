@@ -19,20 +19,21 @@ session_start();
 
 $bdd = getBD();
 
-
-$rep = $bdd->query('select * from utilisateur where pseudo="'.$_POST['pseudo'].'"');
+$pseudo=$_POST['pseudo'];
+$mdp=$_POST['mdp'];
+$rep = $bdd->query('select * from utilisateur where pseudo="'.$pseudo.'"');
 while ($ligne =$rep ->fetch()) 
 {
- echo $ligne['nom']."<br/>";
- echo $ligne['prenom'];
- echo $ligne['pseudo'];
+//  echo $ligne['nom']."<br/>";
+//  echo $ligne['prenom'];
+//  echo $ligne['pseudo'];
 
- if($_POST['pseudo']=='' || $_POST['mdp']=='')
+ if($pseudo=='' || $mdp=='')
 {
    echo '<meta http-equiv="refresh" content="0;url=connexion.php"/>'; 
    // echo 'veuillez remplir tous les champs';
 }
-else if( $ligne['pseudo']!=$_POST['pseudo'] || $ligne['mdp']!=$_POST['mdp'] )
+else if( $ligne['pseudo']!=$pseudo || $ligne['Mdp']!=$mdp )
 {
  echo 'Mauvais identifiant ou mauvais mot de passe';
 }
@@ -43,11 +44,10 @@ else
        $ligne['nom'],
        $ligne['prenom'],
        $ligne['age'],
-       $ligne['est_moderateur']
-       $ligne['email']
-       $ligne['description']
-       $ligne['mdp']
-      
+       $ligne['est_moderateur'],
+       $ligne['Email'],
+       $ligne['Description'],
+       $ligne['Mdp']
       
       );
 	   
@@ -62,6 +62,5 @@ else
 
 ?>
 
-
-</body>
+</head>
 </html>
