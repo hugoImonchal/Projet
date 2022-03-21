@@ -1,14 +1,16 @@
-<?php session_start(); ?>
+<?php session_start(); ?> 
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="../styles/style.css" type="text/css" media="screen" />
         <meta http-equiv="Content-Type"content="text/html; charset=UTF-8" />
-        <title>Walozz</title>
+        <title>Hugo</title>
         <header class="main">	
             <nav>
-                <h1 id="logo" >Where2Watch </h1>
                 <ul class="menu">
+                <li>
+				<a href="index.php"> Where2Watch</a>
+				</li>
                     <li>
                     <a href="acceuil.php">Accueil</a>
                     </li>
@@ -30,8 +32,12 @@
         </header>
     </head>
     <body>
-        <h1 id="titre">Walozz</h1>
-        <img src="../images/Walozz.jpg"/></p>
+    <br>
+<br>
+<br>
+<br>
+        <h1 id="titre">Hugo</h1>
+        <img src="../images/hugo.jpg"/></p>
     <br></br>
     Comment me contactez ? 
     <ul>

@@ -8,10 +8,12 @@
         <title>Contact</title>
         <header class="main">	
             <nav>
-                <h1 id="logo" >Where2Watch </h1>
                 <ul class="menu">
+                <li>
+				<a href="../index.php"> Where2Watch</a>
+				</li>
                     <li>
-                    <a href="acceuil.php">Accueil</a>
+                    <a href="../acceuil.php">Accueil</a>
                     </li>
                     <?php
                     if(isset($_SESSION['utili'])){
@@ -31,6 +33,10 @@
         </header>
     </head>
     <body>
+	<br>
+<br>
+<br>
+<br>
         
 
         <h1 id="titre">Présentation</h1>
