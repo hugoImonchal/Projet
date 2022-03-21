@@ -20,8 +20,8 @@ $filmes = $result->fetchAll(PDO::FETCH_ASSOC);
 
     <table>
             <tr>
-                <th>ID</th>
                 <th>Titre</th>
+                <th>Id Film</th>
                 <th>Anne</th>
                 <th>Note</th>
             </tr>
@@ -30,8 +30,8 @@ $filmes = $result->fetchAll(PDO::FETCH_ASSOC);
                 echo "<tr>";
                 echo "<td><a href='film.php?IdFilm=" . $film['IdFilm'] . "'>" . $film['Titre'] . "</a></td>";
                 echo '<td>' . $film['IdFilm'] . '</td>';
-                echo '<td>' . $film['Annee'] . '</td>';
-                echo '<td>' . $film['Note_IMBD'] . '</td>';
+                echo '<td>' . $film['annee'] . '</td>';
+                echo '<td>' . $film['Note_TMDB'] . '</td>';
                 echo "</tr>";
             }
             ?>
