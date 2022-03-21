@@ -1,4 +1,4 @@
-<html>
+<html lang="fr">
 
 <head>
 	<title>api</title>
@@ -184,6 +184,7 @@ curl_setopt_array($curl, array(
 
 
 // Definition de $_SESSION['data'] qui contient la liste des id_TMDB des films
+/*
 if(!isset($_SESSION['data'])){
 	//Recuperation des id_TMDB dans le csv
 	$filename = '../data/TMDB_10000_Popular_Movies.csv';
@@ -205,21 +206,32 @@ if(!isset($_SESSION['data'])){
 	$_SESSION['data']=$data;
 }else{$data=$_SESSION['data'];}
 
-$var=$_GET['var'];
-$var2=$var+100;
+if(!isset($_SESSION['var'])){
+	$_SESSION['var']=1;
+}	
+*/
+
+//parcourir la liste des id et recolter les informations sur chaque film.
+/*
+$var=$_SESSION['var'];
+$var2=$var+20;
 for ($i = $var; $i <= $var2; $i++) {
     $id_film=$data[$i];
 	enregistrement_film($id_film);
-	echo "<p> Enregistrement effectue:{$id_film}</p>";
-	sleep(0.3);
-
+	//echo "<p> Enregistrement effectue:{$id_film}</p>";
+	sleep(0.2);
 }
+sleep(1);
+$_SESSION['var']=$var2+1;
+//header("refresh: 5"); //refresh la page toutes les 5sec 
+*/
 ?>
 </head>
 
 <body>
+	<p>Fuyez, pauvre fou ... </p>
 	<?php
-	// echo "<p> Ids actuels: ".$var." a ".$var2."</p>";
+	//echo "<p> Ids actuels: ".$var." a ".$var2."</p>";
 	?>
 </body>
 
