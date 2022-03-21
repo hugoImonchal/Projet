@@ -16,8 +16,8 @@ content="text/html; charset=UTF-8" />
 <form action="connecter.php" method="post" autocomplete="off">
 
 <p>
-Adresse email:
-<input type="text" name="email" value=""/>
+Pseudo:
+<input type="text" name="pseudo" value=""/>
 </p>
 
 <p>
