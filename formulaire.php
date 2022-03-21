@@ -51,7 +51,7 @@ $ispseudo=0;
 	}else{
 		$rep ->closeCursor();
 		enregistrer($nom,$prenom,$pseudo,$email,$age,$mdp);
-		echo  '<meta http-equiv="Refresh" content="0; url=../Projet/index.html" />';
+		echo  '<meta http-equiv="Refresh" content="0; url=../Projet/index.php" />';
 
 		
 	}
