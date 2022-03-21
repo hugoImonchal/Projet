@@ -1,0 +1,74 @@
+*{
+	padding:0px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+
+
+}
+body{    background-color:rgba(212, 208, 208, 0.274);
+
+
+}
+h1{background-image: url(../images/marbre.webp);
+    color: white;
+    text-align: center;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+    height: 75px;
+    padding-top: 10px;
+
+}
+
+#titre{padding-top: 100px;
+margin-right: 0px;}
+
+p{ font-size: large;
+    padding-left: 10px;
+    margin-bottom: 0%;
+
+}
+table{border: 2px black ;
+border-style: solid;
+height: auto;
+width: 300px;
+margin-right: auto;
+margin-left: auto;}
+td{border: 2px black ;
+    border-style: solid;
+text-align: center;}
+
+a {
+margin-bottom: 20px;}
+
+img {float: left;
+}
+
+li{margin-left: 100px;}
+.main{
+	background-image: url(../images/marbre.webp);
+	color: white;
+    position: fixed;
+    width:100%;
+    margin-left: 0px;
+    height: 80px;
+
+
+}
+nav{
+	min-height:10vh;
+	display: flex;
+	width:100%;
+	margin: 0px;
+}
+
+nav ul{
+	display:flex;
+	flex: 1 1 40rem;
+	justify-content: space-around;
+	align-items:center;
+	list-style:none;
+	
+}
+.bandeau{
+	color:white;
+	text-decoration:none;
+}
