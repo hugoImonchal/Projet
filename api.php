@@ -4,6 +4,7 @@
 	<title>api</title>
 
 <?php
+// Code d'appelle aux api inspiré du code snippet disponible sur https://imdb-api.com/API
 session_start();
 include('php/bdd.php');
 
