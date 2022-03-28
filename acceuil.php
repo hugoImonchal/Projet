@@ -53,27 +53,28 @@ ini_set('display_errors', 'on');
 		<input type='text' placeholder='recherche' name="recherche_valeur"/>
 		<input type='submit' value="Rechercher"/>
 	</form>
-	<table>
-		<thead>
-			<tr><th>Titre</th></tr>
-		</thead>
-		<tbody>
+
+		<body>
 			<?php
 				$sql='select * from film';
 
 				$params=[];
 				if(isset($_POST['recherche_valeur'])){
 					$sql.=' where Titre like :Titre';
+	
 					$params[':Titre']="%".addcslashes($_POST['recherche_valeur'],'_')."%";
 				}
                 
 				$resultats=$connect->prepare($sql);
 				$resultats->execute($params);
+				echo '<br>';
 				if($resultats->rowCount()>0){
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){
 				
-                        echo "<td><a href='film.php?IdFilm=" . $d['IdFilm'] . "'>" . $d['Titre'] . "</a></td>";
-                        echo "</tr>";
+                        echo "<a class='film' href='film.php?IdFilm=" . $d['IdFilm'] . "'>" . $d['Titre'] . "</a>";
+						echo '<br>';
+						echo   "<a href='film.php?IdFilm=".$d['IdFilm']."'> <img src= ".$d['Affiche']. " alt= 'image' >" ."<a/>";
+						//echo '<br>';
   
 					}
 					$resultats->closeCursor();
