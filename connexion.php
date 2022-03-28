@@ -20,7 +20,7 @@ content="text/html; charset=UTF-8" />
 				<?php
 				if(isset($_SESSION['utili'])){
 					echo '<li> <a href="deconnexion.php">Deconnexion </a> </li>';
-					echo '<li> <a href"profil.php"> Profil </a> </li>';
+					echo '<li> <a href="profil.php"> Profil </a> </li>';
 				}
 				else{
 				echo '<li> <a href="connexion.php"> Connexion </a> </li> ';

@@ -31,7 +31,8 @@ border-style: solid;
 height: auto;
 width: 300px;
 margin-right: auto;
-margin-left: auto;}
+margin-left: auto;
+color : black;}
 td{border: 2px black ;
     border-style: solid;
 text-align: center;}
@@ -77,3 +78,4 @@ nav ul{
 	color:white;
 	text-decoration:none;
 }
+.film{color:black;}
