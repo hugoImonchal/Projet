@@ -62,6 +62,8 @@ else{$ismdp=1; $mdp=$_POST['mdp'];}
 			</ul>
 		</nav>
 	</header>
+	<section class= "fond">
+
   <?php
 $ispseudo=0;
   if($nom!="" && $prenom!="" && $pseudo!="" && $email!="" && $mdp!="" && $ismdp) {
