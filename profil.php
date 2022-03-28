@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type"
 content="text/html; charset=UTF-8" />
 
-<link rel="stylesheet" href="styles/styleindexx.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
 
 <title>Profil</title>
 
