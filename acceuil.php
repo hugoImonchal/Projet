@@ -1,6 +1,7 @@
-<?php
-session_start();
 
+<?php //source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/
+session_start();
+ini_set('display_errors', 'on');
 
 
 ?>
@@ -21,14 +22,16 @@ session_start();
 				<li>
 				<a href="acceuil.php">Accueil</a>
 				</li>
-				<?php
+				<?php 
 				if(isset($_SESSION['utili'])){
 					echo '<li> <a href="deconnexion.php">Deconnexion </a> </li>';
 					echo '<li> <a href"profil.php"> Profil </a> </li>';
 				}
 				else{
 				echo '<li> <a href="connexion.php"> Connexion </a> </li> ';
-				echo '<li> <a href="FormulaireInscription.php"> Inscription </a> </li>';} ?>
+				echo '<li> <a href="FormulaireInscription.php"> Inscription </a> </li>';} 
+				
+				?>
 				
 				<li>
 				<a href="contact/contact.php">Contact</a>
@@ -52,11 +55,12 @@ session_start();
 	</form>
 	<table>
 		<thead>
-			<tr><th>Titre</th><th> Disponibilité sur platefomrme</th></tr>
+			<tr><th>Titre</th></tr>
 		</thead>
 		<tbody>
 			<?php
-				$sql='select * from film, etre_disponible';
+				$sql='select * from film';
+
 				$params=[];
 				if(isset($_POST['recherche_valeur'])){
 					$sql.=' where Titre like :Titre';
@@ -69,7 +73,6 @@ session_start();
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){
 				
                         echo "<td><a href='film.php?IdFilm=" . $d['IdFilm'] . "'>" . $d['Titre'] . "</a></td>";
-                        echo '<td>' . $d['Nom_plat'] . '</td>';
                         echo "</tr>";
   
 					}
@@ -79,4 +82,6 @@ session_start();
 				$connect=null;
 			?>
             </tbody>
+			</table>
+			</html>
  

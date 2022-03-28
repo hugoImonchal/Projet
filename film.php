@@ -19,7 +19,7 @@ content="text/html; charset=UTF-8" />
 				<?php
 				if(isset($_SESSION['utili'])){
 					echo '<li> <a href="deconnexion.php">Deconnexion </a> </li>';
-					echo '<li> <a href"profil.php"> Profil </a> </li>';
+					echo '<li> <a href="profil.php"> Profil </a> </li>';
 				}
 				else{
 				echo '<li> <a href="connexion.php"> Connexion </a> </li> ';
@@ -55,6 +55,14 @@ content="text/html; charset=UTF-8" />
 			{
 				echo   "<img src= ".$mat['Affiche']. " alt= 'image' " ."/>";
 				echo $mat['Titre']."<br/>" ;
+				$repa = $bdd->query("select * from etre_disponible where IdFilm=$id ");
+			
+				while ($mata =$repa->fetch()) 
+			{	
+				$plat=$mata['Nom_plat'];
+				echo $plat;}
+					
+				echo $mat['Nom_plat']."<br/>" ;
 				echo $mat['Realisateur']."<br/>"; 
 				echo $mat['annee']."<br/>";
 				echo $mat['Note_TMBD']."<br/>";
@@ -62,8 +70,7 @@ content="text/html; charset=UTF-8" />
 				
 			  
 			}
-			$rep ->closeCursor();
-					
+			
 				
 					
 				?>
