@@ -6,7 +6,12 @@
         <link rel="stylesheet" href="../styles/style.css" type="text/css" media="screen" />
         <meta http-equiv="Content-Type"content="text/html; charset=UTF-8" />
         <title>Contact</title>
-        <header class="main">	
+       
+    </head>
+    <body>
+	
+
+    <header class="main">	
             <nav>
                 <ul class="menu">
                 <li>
@@ -18,7 +23,7 @@
                     <?php
                     if(isset($_SESSION['utili'])){
                         echo '<li> <a href="../deconnexion.php">Deconnexion </a> </li>';
-                        echo '<li> <a href"../profil.php"> Profil </a> </li>';
+                        echo '<li> <a href="../profil.php"> Profil </a> </li>';
                     }
                     else{
                     echo '<li> <a href="../connexion.php"> Connexion </a> </li> ';
@@ -31,9 +36,9 @@
                 </ul>
             </nav>
         </header>
-    </head>
-    <body>
-	<br>
+
+        <section class= "fond">
+
 <br>
 <br>
 <br>
