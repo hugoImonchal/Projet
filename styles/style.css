@@ -32,6 +32,12 @@ height: auto;
 width: 300px;
 margin-right: auto;
 margin-left: auto;}
+
+td a{
+    color: black;
+
+}
+
 td{border: 2px black ;
     border-style: solid;
 text-align: center;}
@@ -55,6 +61,7 @@ li{margin-left: 100px;}
     width:100%;
     margin-left: 0px;
     height: 80px;
+    padding-top: 0px;
 
 
 }
