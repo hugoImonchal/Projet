@@ -78,6 +78,7 @@ function getnote($id_film,$pseudo){
 	</header>
 
 <section class= "fond">
+	
     <?php
 	if(isset($_SESSION['utili']))
 	{ 
