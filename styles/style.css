@@ -37,12 +37,17 @@ td{border: 2px black ;
 text-align: center;}
 
 a {
-margin-bottom: 20px;}
+margin-bottom: 20px;
+text-decoration: none;
+color:white;
+text-decoration:none;
+}
 
 img {float: left;
 }
 
 li{margin-left: 100px;}
+
 .main{
 	background-image: url(../images/marbre.webp);
 	color: white;
