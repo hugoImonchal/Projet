@@ -40,7 +40,6 @@ content="text/html; charset=UTF-8" />
 <br>
 <br>
 <br>
-<h1>Film</h1>
 
 <br />
 <p>
@@ -53,20 +52,22 @@ content="text/html; charset=UTF-8" />
 			
 			while ($mat =$rep->fetch()) 
 			{
+				echo "<h1>". $mat['Titre']."</h1>"."<br/>" ;
 				echo   "<img src= ".$mat['Affiche']. " alt= 'image' " ."/>";
-				echo $mat['Titre']."<br/>" ;
+
 				$repa = $bdd->query("select * from etre_disponible where IdFilm=$id ");
 			
 				while ($mata =$repa->fetch()) 
 			{	
 				$plat=$mata['Nom_plat'];
-				echo $plat;}
+				echo "Film accessible sur : ";
+				echo $plat;
+			echo '<br>';}
 					
-				echo $mat['Nom_plat']."<br/>" ;
-				echo $mat['Realisateur']."<br/>"; 
-				echo $mat['annee']."<br/>";
-				echo $mat['Note_TMBD']."<br/>";
-				echo $mat['description']."<br/>"; 
+				// echo "Film accessible sur : ".$mat['Nom_plat']."<br/>" ;
+				echo "Date sortie du film : ".$mat['annee']."<br/>";
+				echo "Note attribué : ".$mat['Note_TMBD']."<br/>";
+				echo "Synopsis : ".$mat['description']."<br/>"; 
 				
 			  
 			}
