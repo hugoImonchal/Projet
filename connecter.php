@@ -24,6 +24,17 @@ $bdd = getBD();
 
 $pseudo=$_POST['pseudo'];
 $mdp=$_POST['mdp'];
+if($pseudo=='' || $mdp=='')
+{
+   echo '<meta http-equiv="refresh" content="2;url=connexion.php"/>'; 
+   echo 'veuillez remplir tous les champs';
+}
+if( $ligne['pseudo']!=$pseudo || $ligne['Mdp']!=$mdp )
+{
+ echo 'Mauvais identifiant ou mauvais mot de passe';
+ echo '<meta http-equiv="refresh" content="2;url=connexion.php"/>'; 
+
+}
 $rep = $bdd->query('select * from utilisateur where pseudo="'.$pseudo.'"');
 while ($ligne =$rep ->fetch()) 
 {
@@ -31,15 +42,12 @@ while ($ligne =$rep ->fetch())
 //  echo $ligne['prenom'];
 //  echo $ligne['pseudo'];
 
- if($pseudo=='' || $mdp=='')
-{
-   echo '<meta http-equiv="refresh" content="0;url=connexion.php"/>'; 
-   // echo 'veuillez remplir tous les champs';
-}
-else if( $ligne['pseudo']!=$pseudo || $ligne['Mdp']!=$mdp )
+
+if( $ligne['pseudo']!=$pseudo || $ligne['Mdp']!=$mdp )
 {
  echo 'Mauvais identifiant ou mauvais mot de passe';
 }
+
 else
 {
     $_SESSION['utili']=array(
