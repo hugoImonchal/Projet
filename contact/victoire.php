@@ -9,10 +9,10 @@
             <nav>
                 <ul class="menu">
                 <li>
-				<a href="index.php"> Where2Watch</a>
+				<a href="../index.php"> Where2Watch</a>
 				</li>
                     <li>
-                    <a href="acceuil.php">Accueil</a>
+                    <a href="../acceuil.php">Accueil</a>
                     </li>
                     <?php
                     if(isset($_SESSION['utili'])){
