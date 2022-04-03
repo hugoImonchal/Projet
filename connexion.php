@@ -45,24 +45,25 @@ content="text/html; charset=UTF-8" />
 <?php include("php/bdd.php"); ?>
 
 
-<div class="input">
+
 <form action="connecter.php" method="post" autocomplete="off">
+<h1>Se connecter </h1>
 
-<p>
-Pseudo:
-<input type="text" name="pseudo" value=""/>
-</p>
+<div class="input">	
 
-<p>
-Mot de passe :
-<input type="password" name="mdp" value=""/>
-</p>
+<input type="text" name="pseudo" placeholder="pseudo" value=""/>
 
-<p>
-<input type="submit" value="Se connecter">
-</p><p>Si vous n'avez pas de compte inscrivez vous dans le menu ci-dessus</p>
+
+<input type="password" name="mdp" placeholder="mot de passe" value=""/>
 
 </div>
+<p>
+<input type="submit" value="Se connecter">
+</p>
+
+<p>Si vous n'avez pas de compte inscrivez vous dans le menu ci-dessus</p>
+
+
 
 
 </body>
