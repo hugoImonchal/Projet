@@ -47,7 +47,7 @@ content="text/html; charset=UTF-8" />
 
 
 <form action="connecter.php" method="post" autocomplete="off">
-<h1>Se connecter </h1>
+<h1>CONNEXION </h1>
 
 <div class="input">	
 

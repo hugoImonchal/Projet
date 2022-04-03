@@ -73,7 +73,7 @@ $ispseudo=0;
 	if($rep->rowCount()>0){
 		$ispseudo=1;
 		$rep ->closeCursor();
-		echo  '<meta http-equiv="Refresh" content="0; url=../projet/FormulaireInscritpion.php?nom='.$nom.'&prenom='.$prenom.'&ispseudo='.$ispseudo.'&pseudo='.$pseudo.'&email='.$email.'&ismdp='.$ismdp.'"/>';  
+		echo  '<meta http-equiv="Refresh" content="0; url=../projet/FormulaireInscription.php?nom='.$nom.'&prenom='.$prenom.'&ispseudo='.$ispseudo.'&pseudo='.$pseudo.'&email='.$email.'&ismdp='.$ismdp.'"/>';  
 
 	}else{
 		$rep ->closeCursor();
@@ -82,7 +82,7 @@ $ispseudo=0;
 
 		
 	}
-  }else{echo  '<meta http-equiv="Refresh" content="0; url=../projet/FormulaireInscritpion.php?nom='.$nom.'&prenom='.$prenom.'&ispseudo='.$ispseudo.'&pseudo='.$pseudo.'&email='.$email.'&ismdp='.$ismdp.'"/>';  
+  }else{echo  '<meta http-equiv="Refresh" content="0; url=../projet/FormulaireInscription.php?nom='.$nom.'&prenom='.$prenom.'&ispseudo='.$ispseudo.'&pseudo='.$pseudo.'&email='.$email.'&ismdp='.$ismdp.'"/>';  
   }
   
   
@@ -114,7 +114,7 @@ if($nom!="" && $prenom!="" && $pseudo!="" && $email!="" && $mdp!="" && $ismdp) {
 else{
     echo "Au moins un champ n’a pas été saisi";
 	echo "<BR>";
-	echo '<p><a href="./FormulaireInscritpion.php?n='.$nom.'&p='.$prenom.'&pseudo='.$pseudo.'&age='.$_POST['age'].'&email='.$email.'&ismdp='.$ismdp.'" >Retour au formulaire</a></p>';
+	echo '<p><a href="./FormulaireInscription.php?n='.$nom.'&p='.$prenom.'&pseudo='.$pseudo.'&age='.$_POST['age'].'&email='.$email.'&ismdp='.$ismdp.'" >Retour au formulaire</a></p>';
     }
 
 echo '</p>';
