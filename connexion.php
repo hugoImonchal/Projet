@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/styleconnexion.css" type="text/css" media="screen" />
 
 <meta http-equiv="Content-Type"
 content="text/html; charset=UTF-8" />
@@ -33,6 +33,8 @@ content="text/html; charset=UTF-8" />
 			</ul>
 		</nav>
 	</header>
+	<section class= "fond">
+
 </head>
 <br>
 <br>
@@ -42,7 +44,8 @@ content="text/html; charset=UTF-8" />
 <body>
 <?php include("php/bdd.php"); ?>
 
-<center>
+
+<div class="input">
 <form action="connecter.php" method="post" autocomplete="off">
 
 <p>
@@ -57,12 +60,10 @@ Mot de passe :
 
 <p>
 <input type="submit" value="Se connecter">
-</p>
+</p><p>Si vous n'avez pas de compte inscrivez vous dans le menu ci-dessus</p>
 
-</center>
+</div>
 
-
-<h2><a href="FormulaireInscription.php" target="_blank">S'inscrire </a></h2>
 
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 <?php //source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/
 session_start();
 ini_set('display_errors', 'on');
@@ -56,7 +55,7 @@ ini_set('display_errors', 'on');
 
 		<body>
 			<?php
-				$sql='select * from film';
+				$sql='select * from film limit 50';
 
 				$params=[];
 				if(isset($_POST['recherche_valeur'])){
@@ -85,4 +84,3 @@ ini_set('display_errors', 'on');
             </tbody>
 			</table>
 			</html>
- 

@@ -66,7 +66,7 @@ content="text/html; charset=UTF-8" />
 					
 				// echo "Film accessible sur : ".$mat['Nom_plat']."<br/>" ;
 				echo "Date sortie du film : ".$mat['annee']."<br/>";
-				echo "Note attribué : ".$mat['Note_TMBD']."<br/>";
+				echo "Note attribué : ".$mat['Note_TMDB']."<br/>";
 				echo "Synopsis : ".$mat['description']."<br/>"; 
 				
 			  
@@ -76,7 +76,6 @@ content="text/html; charset=UTF-8" />
 					
 				?>
 
-<h2><a href="acceuil.php" > Retour </a></h2>
 
 </body>
 </html>
