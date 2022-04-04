@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include("./php/bdd.php");?>
+<?php include("php/bdd.php");?>
 <?php session_start(); ?>
 <html lang="fr">
 <head>
