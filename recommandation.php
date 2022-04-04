@@ -10,7 +10,7 @@ content="text/html; charset=UTF-8" />
 
 <body>
 
-<?php include("./php/bdd.php"); ?>
+<?php include("php/bdd.php"); ?>
 <?php 
 function getfilm($id){
 	$bdd = getBD();
