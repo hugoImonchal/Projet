@@ -86,6 +86,7 @@ $ispseudo=1;
 	}
   }else{echo  '<meta http-equiv="Refresh" content="0; url=../projet/FormulaireInscription.php?nom='
 	.$nom.'&prenom='.$prenom.'&ispseudo='.$ispseudo.'&pseudo='.$pseudo.'&email='.$email.'&ismdp='.$ismdp.'"/>';  
+
   }
   
   ?>
@@ -96,28 +97,28 @@ $ispseudo=1;
 
 //affichage
 // echo '<p>';
-// if($nom!="" && $prenom!="" && $pseudo!="" && $email!="" && $mdp!="" && $ismdp) {
+if($nom!="" && $prenom!="" && $pseudo!="" && $email!="" && $mdp!="" && $ismdp) {
 	
-//     echo '<BR>';
-//     echo $nom;
-//     echo '<BR>';
-// 	echo $prenom;
-//     echo '<BR>';
-//     echo $pseudo;
-//     echo '<BR>';
-//     echo $email;
-//     echo '<BR>';
-//     echo $_POST['mdp'];
-//     echo '<BR>';	
-// 	echo $_POST['confmdp'];
-//     echo '<BR>';	
-// 	echo $_POST['age'];
-// }
-// else{
-//     echo "Au moins un champ n’a pas été saisi";
-// 	echo "<BR>";
-// 	echo '<p><a href="./FormulaireInscription.php?n='.$nom.'&p='.$prenom.'&pseudo='.$pseudo.'&age='.$_POST['age'].'&email='.$email.'&ismdp='.$ismdp.'" >Retour au formulaire</a></p>';
-//     }
+    echo '<BR>';
+    echo $nom;
+    echo '<BR>';
+	echo $prenom;
+    echo '<BR>';
+    echo $pseudo;
+    echo '<BR>';
+    echo $email;
+    echo '<BR>';
+    echo $_POST['mdp1'];
+    echo '<BR>';	
+	echo $_POST['mdp2'];
+    echo '<BR>';	
+	echo $_POST['age'];
+}
+else{
+    echo "Au moins un champ n’a pas été saisi";
+	echo "<BR>";
+	echo '<p><a href="./FormulaireInscription.php?n='.$nom.'&p='.$prenom.'&pseudo='.$pseudo.'&age='.$_POST['age'].'&email='.$email.'&ismdp='.$ismdp.'" >Retour au formulaire</a></p>';
+    }
 
 // echo '</p>';
 ?>

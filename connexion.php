@@ -47,7 +47,7 @@ content="text/html; charset=UTF-8" />
 
 
 <form action="connecter.php" method="post" autocomplete="off">
-<h1>Se connecter </h1>
+<h1>CONNEXION </h1>
 
 <div class="input">	
 
@@ -61,7 +61,8 @@ content="text/html; charset=UTF-8" />
 <input type="submit" value="Se connecter">
 </p>
 
-<p>Si vous n'avez pas de compte inscrivez vous dans le menu ci-dessus</p>
+<p>Si vous n'avez pas de <span>compte</span>  
+	<span>inscrivez-vous</span>  dans le <span>menu</span>  ci-dessus</p>
 
 
 

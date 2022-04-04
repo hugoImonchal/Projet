@@ -46,7 +46,7 @@ else
        $ligne['nom'],
        $ligne['prenom'],
        $ligne['age'],
-       $ligne['est_moderateur'],
+       $ligne['Est_moderateur'],
        $ligne['Email'],
        $ligne['Description'],
        $ligne['Mdp']
