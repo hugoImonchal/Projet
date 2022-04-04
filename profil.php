@@ -117,6 +117,6 @@ function getnote($id_film,$pseudo){
 	}
 ?>
 
-
+</section>
 </body>
 </html>
