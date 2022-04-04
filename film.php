@@ -64,28 +64,36 @@ function getnote($id_film,$pseudo){
 			while ($mat =$rep->fetch()) 
 			{
 				echo "<h1>". $mat['Titre']."</h1>"."<br/>" ;
-				echo   "<img src= ".$mat['Affiche']. " alt= 'image' " ."/>";
+				echo   "<img class='image' src= ".$mat['Affiche']. " alt= 'image' " ."/>";
 
 				$repa = $bdd->query("select * from etre_disponible where IdFilm=$id ");
 			
 				while ($mata =$repa->fetch()) 
 			{	
 				$plat=$mata['Nom_plat'];
-				echo "Film accessible sur : ";
-				echo $plat;
+				echo "<li>Film accessible sur : ";
+				echo "<a href='plateforme.php?Nom_plat=" . $mata['Nom_plat'] . "'>" . $mata['Nom_plat'] . "</a></li>";
+				
+
 			echo '<br>';}
+			$repas = $bdd->query("select * from etre where IdFilm=$id ");
+			
+			echo "<li>Genre : ";
+			while ($matas =$repas->fetch()) 
+			{	$genre=$matas['Nom_genre'];
+				echo "<a href='genre.php?Nom_genre=" . $genre . "'>" . $genre. "<br></a></li>";}
+				
 					
-				// echo "Film accessible sur : ".$mat['Nom_plat']."<br/>" ;
-				echo "Date sortie du film : ".$mat['annee']."<br/>";
-				echo "Note TMDB : ".$mat['Note_TMDB']."<br/>";
-				echo "Synopsis : ".$mat['description']."<br/>"; 
+				echo "<li>Date sortie du film : ".$mat['annee']."</li><br/>";
+				echo "<li>Note TMDB : ".$mat['Note_TMDB']."</li><br/>";
+				echo "<li>Synopsis : ".$mat['description']."</li><br/>"; 
 				if(isset($_SESSION['pseudo'])){
 					$pseudo=$_SESSION['pseudo'];
 					echo "Votre note : ".getnote($id,$pseudo)."<br/>";
 					echo '<a href="note.php?id='.$id.'"> Notez </a> le film ';
 
 				}
-			  
+			
 			}
 			
 				

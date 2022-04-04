@@ -45,27 +45,21 @@ content="text/html; charset=UTF-8" />
 <?php
 	include('php/bdd.php');
 				$bdd = getBD();
-				$id= $_GET['Nom_plat'];
+				$id= $_GET['Nom_genre'];
 
-			$rep = $bdd->query("SELECT * FROM `plateforme` where Nom_plat='".$id."' ");
-			
+			$rep = $bdd->query("SELECT * FROM `etre` where Nom_genre='".$id."' ");
+            echo "<h1>". $id."</h1>"."<br/>" ;
+
 			while ($mat =$rep->fetch()) 
-			{   
-				echo "<h1>". $mat['Nom_plat']."</h1>"."<br/>" ;
-				echo   "<img src= ".$mat['logo']. " alt= 'image' " ."/>";}
+			 {   
 
-			     $repa = $bdd->query("select * from etre_disponible where Nom_plat='".$id."' ");
-			
-			  	while ($mata =$repa->fetch()) 
-                 { //echo '<br>';
-                    //echo "<a class='film' href='film.php?IdFilm=" . $mata['IdFilm'] . "'>" . $mata['IdFilm'] . "</a>";
-                 
-                $repas = $bdd->query("select * from film where IdFilm='".$mata['IdFilm']."' ");
+			    
+                $repas = $bdd->query("select * from film where IdFilm='".$mat['IdFilm']."' ");
                     while ($matas =$repas->fetch())
                     {echo '<br>';
                     echo "<li><a class='film' href='film.php?IdFilm=" . $matas['IdFilm'] . "'>" . $matas['Titre'] . "</a></li>";
                 }
-                 }
+                  }
                
 			
 				

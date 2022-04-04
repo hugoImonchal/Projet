@@ -47,6 +47,10 @@ ini_set('display_errors', 'on');
     <br>
     <br>
 </head>
+<a href="accueilfilm.php"> Recherche par film</a>
+<br>
+<a href="accueilgenre.php"> Recherche par genre</a>
+
 <?php include('data.php');
 	?>
 	<form method='post'>
@@ -74,9 +78,9 @@ ini_set('display_errors', 'on');
 				if($resultats->rowCount()>0){
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){
 				
-                        echo "<a class='film' href='plateforme.php?Nom_plat=" . $d['Nom_plat'] . "'>" . $d['Nom_plat'] . "</a>";
+                        echo "<a href='plateforme.php?Nom_plat=" . $d['Nom_plat'] . "'>" .  $d['Nom_plat'] . "</a>";
 						echo '<br>';
-						echo   "<a href='plateforme.php?Nom_plat=".$d['Nom_plat']."'> <img src= ".$d['logo']. " alt= 'image' >" ."<a/>";
+						echo   "<a href='plateforme.php?Nom_plat=".$d['Nom_plat']."'> <img class='plat' src= ".$d['logo']. " alt= 'image' >" ."<a/>";
 						//echo '<br>';
   
 					}
