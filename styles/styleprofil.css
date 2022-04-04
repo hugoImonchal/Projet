@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=PT+Sans:wght@700&family=Roboto&family=Roboto+Condensed:ital,wght@1,300&display=swap');
+
+*{
+	margin:0px;
+	padding:0px;
+	box-sitting: border-box;
+
+}
+
+html{
+	font-size: 62.5%;
+	
+	
+}
+
+h1{
+	font-size:2.6rem;
+ 
+}
+
+h2{
+	font-size:4.8rem;
+	font-family: 'PT Sans', sans-serif;
+}
+
+h3{
+	font-size:3rem;
+	font-family: 'PT Sans', sans-serif;
+}
+
+h4,h5{
+	font-size:2.8rem;
+	font-family: 'PT Sans', sans-serif;
+}
+
+a{
+	color:white;
+	text-decoration:none;
+}
+
+li{
+	font-size:2rem;
+	
+}
+
+.main{
+	background-color: darkorange;
+	color: white;
+
+}
+
+nav{
+	min-height:10vh;
+	display: flex;
+	width:90%;
+	margin:auto;
+}
+
+nav ul{
+	display:flex;
+	flex: 1 1 40rem;
+	justify-content: space-around;
+	align-items:center;
+	list-style:none;
+	
+}
+
+#logo{
+	flex: 1 1 40rem;
+	font-family: great-day;
+	font-family: 'Dancing Script', cursive;
+}
+
+.fond{
+	min-height:90vh;
+	background: url("../images/profil.jpg");
+	background-size: cover;
+	background-position:center;
+	color: white;
+	display:flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items:center;
+	
+}
+
+.fond h3{
+	padding:4rem;
+}
+
+p{
+    font-size: 2em;
+    color:black;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 10px;
+    color:#878787
+}    
+
+form{
+    background-color: #f5f5f5;
+    padding:40px 60px;
+    border-radius: 10px;
+    min-width: 300px;
+
+
+}
+
+form h1{
+    color:tomato;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+form .input{
+    display: flex;
+    flex-direction: column;
+
+}
+
+form .input input[type="text"], input[type="password"]{
+    padding:15px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 15px;
+}
+
+span{
+    color:tomato;
+
+}
+
+input[type="submit"]{
+    padding: 15px 25px ;
+    border:none;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color:tomato;
+
+}
