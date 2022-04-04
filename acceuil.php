@@ -50,9 +50,14 @@ ini_set('display_errors', 'on');
     <body>
     <?php include('data.php');?>
 	<form method='post'>
-		<input type='text' placeholder='recherche' name="recherche_valeur"/>
+		<input type='text' placeholder='recherche par titre' name="recherche_valeur"/>
 		<input type='submit' value="Rechercher"/>
 	</form>
+	<br>
+	<form method='post'>
+				<input type='text' placeholder='recherche par plateforme' name="recherche_genre"/>
+				<input type='submit' value="Rechercher"/>
+			</form>
 
 		<body>
 			<?php
@@ -81,7 +86,34 @@ ini_set('display_errors', 'on');
 				}
 				else echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
 				$connect=null;
-			?>
+?>
+					<!-- <?php
+						$sqla='SELECT * FROM `etre_disponible`';
+		
+						$paramsa=[];
+						if(isset($_POST['recherche_plat'])){
+							$sqla.='where IdFilm like :IdFilm';
+			
+							$paramsa[':Nom_plat']="%".addcslashes($_POST['recherche_plat'],'_')."%";
+						}
+						
+						$resultatsa=$connect->prepare($sqla);
+						$resultatsa->execute($paramsa);
+						echo '<br>';
+						if($resultatsa->rowCount()>0){
+							while($da=$resultatsa->fetch(PDO::FETCH_ASSOC)){
+						
+								echo "<a class='film' href='film.php?IdFilm=" . $da['IdFilm'] . "'>" . $da['IdFilm'] . "</a>";
+								echo '<br>';
+								echo   "<a href='film.php?IdFilm=".$da['IdFilm']."'> <img src= ".$da['Affiche']. " alt= 'image' >" ."<a/>";
+								//echo '<br>';
+		  
+							}
+							$resultats->closeCursor();
+						}
+						else echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
+						$connect=null;
+			?> -->
             </tbody>
 			</table>
 			</html>
