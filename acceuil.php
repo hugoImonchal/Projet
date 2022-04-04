@@ -1,3 +1,4 @@
+
 <?php //source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/
 session_start();
 ini_set('display_errors', 'on');
@@ -54,13 +55,13 @@ ini_set('display_errors', 'on');
 	</form>
 	<br>
 	<form method='post'>
-				<input type='text' placeholder='recherche par plateforme' name="recherche_genre"/>
+				<input type='text' placeholder='recherche par plateforme' name="recherche_plat"/>
 				<input type='submit' value="Rechercher"/>
 			</form>
 
 		<body>
 			<?php
-				$sql='select * from film limit 50';
+				$sql='select * from film';
 
 				$params=[];
 				if(isset($_POST['recherche_valeur'])){
@@ -83,36 +84,11 @@ ini_set('display_errors', 'on');
 					}
 					$resultats->closeCursor();
 				}
-				else echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
-				$connect=null;
+				else {echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
+				$connect=null;}
 ?>
-					<!-- <?php
-						$sqla='SELECT * FROM `etre_disponible`';
-		
-						$paramsa=[];
-						if(isset($_POST['recherche_plat'])){
-							$sqla.='where IdFilm like :IdFilm';
 			
-							$paramsa[':Nom_plat']="%".addcslashes($_POST['recherche_plat'],'_')."%";
-						}
-						
-						$resultatsa=$connect->prepare($sqla);
-						$resultatsa->execute($paramsa);
-						echo '<br>';
-						if($resultatsa->rowCount()>0){
-							while($da=$resultatsa->fetch(PDO::FETCH_ASSOC)){
-						
-								echo "<a class='film' href='film.php?IdFilm=" . $da['IdFilm'] . "'>" . $da['IdFilm'] . "</a>";
-								echo '<br>';
-								echo   "<a href='film.php?IdFilm=".$da['IdFilm']."'> <img src= ".$da['Affiche']. " alt= 'image' >" ."<a/>";
-								//echo '<br>';
-		  
-							}
-							$resultats->closeCursor();
-						}
-						else echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
-						$connect=null;
-			?> -->
             </tbody>
 			</table>
 			</html>
+ 
