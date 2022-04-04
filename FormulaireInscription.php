@@ -81,7 +81,7 @@ echo '
     <input type="text" placeholder="Prénom" name="p" value="'.$prenom.'"/>
    
     <input type="text" placeholder="Entrer votre pseudo" name="pseudo" value="'.$pseudo.'"/>
-    </div>';
+    ';
 	
 	if ($ispseudo==0){
 		echo '<p> Le pseudo '.$pseudo.' est deja pris. Veuillez changer. </p>';
@@ -96,24 +96,18 @@ echo '
     <OPTION VALUE="-18ans">-18ans</OPTION>
     <OPTION VALUE="+18ans">+18ans</OPTION>
     </SELECT>
-<<<<<<< HEAD
-    </p>
-    Mail :
+
     <input type="text" placeholder="Entrer votre mail" name="mail" value="'.$email.'"/>
-    </p>
-    <p>
-    Mot de passe :
+    
     <input type="password" placeholder="Entrer votre mot de passe" name="mdp" value=""/>
-    </p>
-    <p>
-    Confirmer mot de passe :
+    
     <input type="password" placeholder="Confirmer votre mot de passe" name="confmdp" value=""/>
     </p>';
 	if ($ismdp==0){
 		echo '<p> Les deux mots de passe doivent etre identique. </p>';
 	}
 	echo '
-    <div class="input">	
+    
 
     <input type="submit" value="Envoyer">
   </div>';
