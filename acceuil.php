@@ -1,3 +1,4 @@
+
 <?php //source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/
 session_start();
 ini_set('display_errors', 'on');
@@ -49,13 +50,18 @@ ini_set('display_errors', 'on');
     <body>
     <?php include('data.php');?>
 	<form method='post'>
-		<input type='text' placeholder='recherche' name="recherche_valeur"/>
+		<input type='text' placeholder='recherche par titre' name="recherche_valeur"/>
 		<input type='submit' value="Rechercher"/>
 	</form>
+	<br>
+	<form method='post'>
+				<input type='text' placeholder='recherche par plateforme' name="recherche_plat"/>
+				<input type='submit' value="Rechercher"/>
+			</form>
 
 		<body>
 			<?php
-				$sql='select * from film limit 50';
+				$sql='select * from film';
 
 				$params=[];
 				if(isset($_POST['recherche_valeur'])){
@@ -78,9 +84,11 @@ ini_set('display_errors', 'on');
 					}
 					$resultats->closeCursor();
 				}
-				else echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
-				$connect=null;
-			?>
+				else {echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
+				$connect=null;}
+?>
+			
             </tbody>
 			</table>
 			</html>
+ 
