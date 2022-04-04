@@ -95,15 +95,16 @@ function getnote($id_film,$pseudo){
 				}
 			
 			}
+
+			// if (isset($_SESSION['utili'])) {
+			// 	$idd = $_SESSION['IdFilm'];
+			// 	$pseudoo = $_SESSION['pseudo'];
 			
 			if(isset($_POST['poster'])){
 				if(isset($_POST['commentaire']) AND !empty($_POST['commentaire']))
 				{
-					$commentaire= htmlspecialchars($_POST['commentaire']);
-					$bdd=getBD();
-					$pseudo= $_SESSION['pseudo'];
-        			$id=$_POST['id'];
-					$ins="INSERT INTO commentaire (pseudo,IdFilm,  Commentaire) VALUES (?,?,?)";
+					$commentaire= ($_POST['commentaire']);
+					$ins="INSERT INTO commenter (pseudo,IdFilm,  Commentaire) VALUES (?,?,?)";
 	        		$bdd->prepare($ins)->execute([$pseudo,$id,$commentaire]);
 
 					
