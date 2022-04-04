@@ -88,6 +88,8 @@ ini_set('display_errors', 'on');
 				else {echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
 				$connect=null;}
 ?>
+<p>
+<a href="touslesfilms.php"> Voir tous les films </a></p>
 			
             </tbody>
 			</table>

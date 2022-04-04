@@ -96,10 +96,49 @@ function getnote($id_film,$pseudo){
 			
 			}
 			
+			if(isset($_POST['poster'])){
+				if(isset($_POST['commentaire']) AND !empty($_POST['commentaire']))
+				{
+					$commentaire= htmlspecialchars($_POST['commentaire']);
+					$bdd=getBD();
+					$pseudo= $_SESSION['pseudo'];
+        			$id=$_POST['id'];
+					$ins="INSERT INTO commentaire (pseudo,IdFilm,  Commentaire) VALUES (?,?,?)";
+	        		$bdd->prepare($ins)->execute([$pseudo,$id,$commentaire]);
+
+					
+
+
+					$msg= "votre commentaire a bien été posté";
+
+				}else{
+					$msg= "Erreur: Le champ ne doit pas être vide";
+
+
+
+				}
+
+
+			}
 				
 					
 				?>
 
+
+				<br><br>
+
+			<?php	if(isset($_SESSION['utili'])){
+			 echo "<h2>Commentaires:</h2>";
+			 echo '
+<form method= "POST" >
+<textarea name="commentaire" placeholder="Votre commentaire..." ></textarea>
+<input type="submit" name="poster" value="poster mon commentaire" />
+</form>';
+			
+
+}
+
+	 ?>
 
 </body>
 </html>

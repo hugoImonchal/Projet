@@ -117,7 +117,7 @@ if($nom!="" && $prenom!="" && $pseudo!="" && $email!="" && $mdp!="" && $ismdp) {
 else{
     echo "Au moins un champ n’a pas été saisi";
 	echo "<BR>";
-	echo '<p><a href="./FormulaireInscription.php?n='.$nom.'&p='.$prenom.'&pseudo='.$pseudo.'&age='.$_POST['age'].'&email='.$email.'&ismdp='.$ismdp.'" >Retour au formulaire</a></p>';
+	echo '<p><a href="FormulaireInscription.php?n='.$nom.'&p='.$prenom.'&pseudo='.$pseudo.'&age='.$_POST['age'].'&email='.$email.'&ismdp='.$ismdp.'" >Retour au formulaire</a></p>';
     }
 
 // echo '</p>';
