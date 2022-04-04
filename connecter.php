@@ -7,15 +7,6 @@ content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
 
 <title>Connecter</title>
-
-</head>
-<body>
-<br>
-<br>
-<br>
-<br>
-
-
 <?php 
 include('php/bdd.php');
 session_start();

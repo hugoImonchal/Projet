@@ -20,7 +20,7 @@ $pseudo=$_GET['pseudo'];}
 else{$pseudo="";}
 if(isset($_GET['ismdp'])){
 $ismdp=$_GET['ismdp'];}
-else{$ismdp=1;}
+else{$ismdp=0;}
 if(isset($_GET['ispseudo'])){
 $ispseudo=$_GET['ispseudo'];}
 else{$ispseudo=1;}
@@ -83,7 +83,7 @@ echo '
     <input type="text" placeholder="Entrer votre pseudo" name="pseudo" value="'.$pseudo.'"/>
     </p>';
 	
-	if ($ispseudo=1){
+	if ($ispseudo==0){
 		echo '<p> Le pseudo '.$pseudo.' est deja pris. Veuillez changer. </p>';
 	}
 	echo '
@@ -109,7 +109,7 @@ echo '
     Confirmer mot de passe :
     <input type="password" placeholder="Confirmer votre mot de passe" name="confmdp" value=""/>
     </p>';
-	if ($ismdp=1){
+	if ($ismdp==0){
 		echo '<p> Les deux mots de passe doivent etre identique. </p>';
 	}
 	echo '
