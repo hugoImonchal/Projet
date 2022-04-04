@@ -44,6 +44,17 @@ content="text/html; charset=UTF-8" />
 <br />
 <p>
 <?php
+function getnote($id_film,$pseudo){
+    $bdd = getBD();
+	$rep = $bdd->query("select ifnull((select Note from noter where IdFilm=$id_film and pseudo='$pseudo'),'Pas de note') As Note");
+	while ($mat =$rep->fetch()) 
+	{
+		$note=$mat['Note'];
+    }
+    return $note;
+}
+?>
+<?php
 	include('php/bdd.php');
 				$bdd = getBD();
 				$id= $_GET['IdFilm'];
@@ -66,9 +77,14 @@ content="text/html; charset=UTF-8" />
 					
 				// echo "Film accessible sur : ".$mat['Nom_plat']."<br/>" ;
 				echo "Date sortie du film : ".$mat['annee']."<br/>";
-				echo "Note attribué : ".$mat['Note_TMBD']."<br/>";
+				echo "Note TMDB : ".$mat['Note_TMDB']."<br/>";
 				echo "Synopsis : ".$mat['description']."<br/>"; 
-				
+				if(isset($_SESSION['pseudo'])){
+					$pseudo=$_SESSION['pseudo'];
+					echo "Votre note : ".getnote($id,$pseudo)."<br/>";
+					echo '<a href="note.php?id='.$id.'"> Notez </a> le film ';
+
+				}
 			  
 			}
 			
@@ -76,7 +92,6 @@ content="text/html; charset=UTF-8" />
 					
 				?>
 
-<h2><a href="acceuil.php" > Retour </a></h2>
 
 </body>
 </html>

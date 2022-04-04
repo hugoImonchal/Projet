@@ -1,6 +1,8 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
+<link rel="stylesheet" href="styles/styleinscription.css" type="text/css" media="screen" />
+
 <?php
 //recuperation des information si formulaire mal rempli
 if(isset($_GET['nom'])){
@@ -20,17 +22,16 @@ $pseudo=$_GET['pseudo'];}
 else{$pseudo="";}
 if(isset($_GET['ismdp'])){
 $ismdp=$_GET['ismdp'];}
-else{$ismdp=1;}
+else{$ismdp=0;}
 if(isset($_GET['ispseudo'])){
 $ispseudo=$_GET['ispseudo'];}
 else{$ispseudo=1;}
 ?>
 <head>
-<link rel="stylesheet" href="styles/styleindexx.css" type="text/css" media="screen" />
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulaire d'inscription</title>
+  <title>Inscription</title>
   <header class="main">	
 		<nav>
 			<ul class="menu">
@@ -71,25 +72,23 @@ else{$ispseudo=1;}
     <p>
 <?php 
 echo '
-    Nom :
-    <input type="text" placeholder="Entrer votre nom" name="n" value="'.$nom.'"/>
-    </p>
-    <p>
-    Prénom :
-    <input type="text" placeholder="Entrer votre prénom" name="p" value="'.$prenom.'"/>
-    </p>
-    <p>
-    Pseudo :
+<h1> INSCRIPTION </h1>
+
+<div class="input">	
+    <input type="text" placeholder="Nom" name="n" value="'.$nom.'"/>
+    
+  
+    <input type="text" placeholder="Prénom" name="p" value="'.$prenom.'"/>
+   
     <input type="text" placeholder="Entrer votre pseudo" name="pseudo" value="'.$pseudo.'"/>
-    </p>';
+    </div>';
 	
-	if ($ispseudo=1){
+	if ($ispseudo==0){
 		echo '<p> Le pseudo '.$pseudo.' est deja pris. Veuillez changer. </p>';
 	}
 	echo '
-    <p>
-    Age :
-    <SELECT name="age"> placeholder="sélectionner votre age"
+    <p> Séléctionnez votre âge </p>
+    <SELECT name="age"> placeholder="Age"
         <OPTION
         VALUE="-10ans">-10ans</OPTION>
     <OPTION VALUE="-12ans">-12ans</OPTION>
@@ -97,6 +96,7 @@ echo '
     <OPTION VALUE="-18ans">-18ans</OPTION>
     <OPTION VALUE="+18ans">+18ans</OPTION>
     </SELECT>
+<<<<<<< HEAD
     </p>
     Mail :
     <input type="text" placeholder="Entrer votre mail" name="mail" value="'.$email.'"/>
@@ -109,13 +109,14 @@ echo '
     Confirmer mot de passe :
     <input type="password" placeholder="Confirmer votre mot de passe" name="confmdp" value=""/>
     </p>';
-	if ($ismdp=1){
+	if ($ismdp==0){
 		echo '<p> Les deux mots de passe doivent etre identique. </p>';
 	}
 	echo '
-    <p>
+    <div class="input">	
+
     <input type="submit" value="Envoyer">
-    </p>';
+  </div>';
 	
 
 ?>    

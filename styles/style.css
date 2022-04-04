@@ -31,18 +31,15 @@ border-style: solid;
 height: auto;
 width: 300px;
 margin-right: auto;
-<<<<<<< HEAD
 margin-left: auto;
 color : black;}
-=======
-margin-left: auto;}
 
 td a{
     color: black;
 
 }
 
->>>>>>> ab252ff322bf766593a7856ec4b819af96af8535
+
 td{border: 2px black ;
     border-style: solid;
 text-align: center;}

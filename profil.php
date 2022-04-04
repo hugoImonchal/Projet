@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type"
 content="text/html; charset=UTF-8" />
 
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/styleprofil.css" type="text/css" media="screen" />
 
 <title>Profil</title>
 
@@ -12,7 +12,7 @@ content="text/html; charset=UTF-8" />
 
 <body>
 
-<?php include("./php/bdd.php"); ?>
+<?php include("php/bdd.php"); ?>
 
 <?php session_start(); ?>
 <?php 
@@ -76,7 +76,7 @@ function getnote($id_film,$pseudo){
 			</ul>
 		</nav>
 	</header>
-<br><br><br><br><br><br>
+
 <section class= "fond">
 	
     <?php

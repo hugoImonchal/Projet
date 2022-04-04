@@ -27,7 +27,7 @@
                     }
                     else{
                     echo '<li> <a href="../connexion.php"> Connexion </a> </li> ';
-                    echo '<li> <a href=../"FormulaireInscription.php"> Inscription </a> </li>';} ?>
+                    echo '<li> <a href="../FormulaireInscription.php"> Inscription </a> </li>';} ?>
                     
                     <li>
                     <a href="contact.php">Contact</a>

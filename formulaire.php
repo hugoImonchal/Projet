@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
+<html lang="fr">
 <?php
 include('php/bdd.php');
 //fonction permettant d'enregistrer dans la bd sql le information du client
@@ -30,14 +31,14 @@ if ($_POST['mdp']!=$_POST['confmdp']){
 $ismdp=0; $mdp="";}
 else{$ismdp=1; $mdp=$_POST['mdp'];}
 ?>
-<html lang="fr">
+
 <head>
 <link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <title>Formulaire</title>
-  <header class="main">	
+  <!-- <header class="main">	
 		<nav>
 			<ul class="menu">
       <li>
@@ -47,13 +48,13 @@ else{$ismdp=1; $mdp=$_POST['mdp'];}
 				<a href="acceuil.php">Accueil</a>
 				</li>
 				<?php
-				if(isset($_SESSION['utili'])){
-					echo '<li> <a href="deconnexion.php">Deconnexion </a> </li>';
-					echo '<li> <a href="profil.php"> Profil </a> </li>';
-				}
-				else{
-				echo '<li> <a href="connexion.php"> Connexion </a> </li> ';
-				echo '<li> <a href="FormulaireInscription.php"> Inscription </a> </li>';} ?>
+				// if(isset($_SESSION['utili'])){
+				// 	echo '<li> <a href="deconnexion.php">Deconnexion </a> </li>';
+				// 	echo '<li> <a href="profil.php"> Profil </a> </li>';
+				// }
+				// else{
+				// echo '<li> <a href="connexion.php"> Connexion </a> </li> ';
+				// echo '<li> <a href="FormulaireInscription.php"> Inscription </a> </li>';} ?>
 				
 				<li>
 				<a href="contact/contact.php">Contact</a>
@@ -62,18 +63,19 @@ else{$ismdp=1; $mdp=$_POST['mdp'];}
 			</ul>
 		</nav>
 	</header>
-	<section class= "fond">
+	<section class= "fond"> -->
 
   <?php
-$ispseudo=0;
-  if($nom!="" && $prenom!="" && $pseudo!="" && $email!="" && $mdp!="" && $ismdp) {
+$ispseudo=1;
+  if($nom!="" && $prenom!="" && $pseudo!="" && $email!="" && $mdp!="" && $ismdp==1) {
 	$bdd=getBD();
 	$rep = $bdd->prepare("select * from utilisateur where pseudo='".$pseudo."'");
 	$rep->execute();
 	if($rep->rowCount()>0){
-		$ispseudo=1;
+		$ispseudo=0;
 		$rep ->closeCursor();
-		echo  '<meta http-equiv="Refresh" content="0; url=../projet/FormulaireInscritpion.php?nom='.$nom.'&prenom='.$prenom.'&ispseudo='.$ispseudo.'&pseudo='.$pseudo.'&email='.$email.'&ismdp='.$ismdp.'"/>';  
+		echo  '<meta http-equiv="Refresh" content="0; url=../projet/FormulaireInscription.php?nom='
+		.$nom.'&prenom='.$prenom.'&ispseudo='.$ispseudo.'&pseudo='.$pseudo.'&email='.$email.'&ismdp='.$ismdp.'"/>';  
 
 	}else{
 		$rep ->closeCursor();
@@ -82,9 +84,10 @@ $ispseudo=0;
 
 		
 	}
-  }else{echo  '<meta http-equiv="Refresh" content="0; url=../projet/FormulaireInscritpion.php?nom='.$nom.'&prenom='.$prenom.'&ispseudo='.$ispseudo.'&pseudo='.$pseudo.'&email='.$email.'&ismdp='.$ismdp.'"/>';  
+  }else{echo  '<meta http-equiv="Refresh" content="0; url=../projet/FormulaireInscription.php?nom='
+	.$nom.'&prenom='.$prenom.'&ispseudo='.$ispseudo.'&pseudo='.$pseudo.'&email='.$email.'&ismdp='.$ismdp.'"/>';  
+
   }
-  
   
   ?>
   
@@ -93,7 +96,7 @@ $ispseudo=0;
     <?php
 
 //affichage
-echo '<p>';
+// echo '<p>';
 if($nom!="" && $prenom!="" && $pseudo!="" && $email!="" && $mdp!="" && $ismdp) {
 	
     echo '<BR>';
@@ -114,10 +117,10 @@ if($nom!="" && $prenom!="" && $pseudo!="" && $email!="" && $mdp!="" && $ismdp) {
 else{
     echo "Au moins un champ n’a pas été saisi";
 	echo "<BR>";
-	echo '<p><a href="./FormulaireInscritpion.php?n='.$nom.'&p='.$prenom.'&pseudo='.$pseudo.'&age='.$_POST['age'].'&email='.$email.'&ismdp='.$ismdp.'" >Retour au formulaire</a></p>';
+	echo '<p><a href="./FormulaireInscription.php?n='.$nom.'&p='.$prenom.'&pseudo='.$pseudo.'&age='.$_POST['age'].'&email='.$email.'&ismdp='.$ismdp.'" >Retour au formulaire</a></p>';
     }
 
-echo '</p>';
+// echo '</p>';
 ?>
 </body>
 </html>

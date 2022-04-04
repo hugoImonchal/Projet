@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<?php include("./php/bdd.php");
-    function visionne($id,$pseudo){
-        $bdd=getBD();
-        $sql="INSERT INTO vu (id_film, pseudo) VALUES (?,?)";
-       $bdd->prepare($sql)->execute([$id,$pseudo]);
-
-    } ?>
+<?php include("./php/bdd.php");?>
 <?php session_start(); ?>
 <html lang="fr">
 <head>
@@ -14,30 +8,31 @@ content="text/html; charset=UTF-8" />
 
 <link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
 
-<title>Noter</title>
+<title>Vu</title>
 
 </head>
 <body>
 
 	<?php
+    function visionne($id,$pseudo){
+        $bdd=getBD();
+        $sql="INSERT INTO vu (id_film, pseudo) VALUES (?,?)";
+       $bdd->prepare($sql)->execute([$id,$pseudo]);
+
+    }
 	if(isset($_SESSION['utili']))
 	{ 
 		 $pseudo= $_SESSION['pseudo'];
-         $id=$_POST['id'];
-         $actnote=$_POST['actnote'];
-         $note=$_POST['newnote'];
-         if($actnote=="Pas de note"){
-             $bdd=getBD();
-             $sql="INSERT INTO noter (IdFilm, pseudo, Note) VALUES (?,?,?)";
-	        $bdd->prepare($sql)->execute([$id,$pseudo,$note]);
-
+         $id=$_GET['id'];
+         $ajout=$_POST['ajout'];
+         if($ajout=1){
+            visionne($id,$pseudo);
          }else{
             $bdd=getBD();
-            $sql="UPDATE noter SET Note =".$note." WHERE noter.IdFilm =".$id." AND noter.pseudo ='".$pseudo."'";
+            $sql="delete from vu WHERE vu.id_film =".$id." AND vu.pseudo ='".$pseudo."'";
            $bdd->prepare($sql)->execute();
          }
-		 visionne($id,$pseudo);
-         echo  '<meta http-equiv="Refresh" content="0; url=./profil.php" />';
+         echo  '<meta http-equiv="Refresh" content="0; url=./film.php?id='.$id.'" />';
     
 	}
 	else 
