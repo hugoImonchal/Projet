@@ -80,34 +80,46 @@ function getnote($id_film,$pseudo){
 <section class= "fond">
 	
 
+    
+    
+    <?php
+	if(isset($_SESSION['utili']))
+	{ 
+		$pseudo=$_SESSION['pseudo'];
+		// echo '<p>Vos films visionés</p>';
+		// echo '<table><tr><th>id</th><th>Titre</th><th>Votre note</th></tr>';
+        $bdd=getBD();
+        $sql="select * from vu where pseudo='$pseudo'";
+		$rep=$bdd->query($sql);
+		//listes des films visionés
+        // while ($ligne = $rep ->fetch()) {
 
+        // 	$id_film=$ligne['id_film'];
+		// 	//echo $id_film;
+		// 	$titre=getfilm($id_film);
+		// 	//echo $titre;
+		// 	$note=getnote($id_film,$pseudo);
+		// 	//echo $note;				
+			
+		//  	echo "<tr><td>{$id_film}</td><td>{$titre}</td><td>{$note}<br><a href='note.php?id={$id_film}'>modifier</a></td></tr>"; //<br><a href='note.php'>modifier</a>
+		// }
+		// $rep ->closeCursor();
+		// echo '</table>';
+		echo "<p> Vos platformes de streaming: </p>";
+		$sql="select * from etre_inscrit where pseudo='$pseudo'";
+		$rep=$bdd->query($sql);
+		echo "<ul>";
+		while ($ligne = $rep ->fetch()) {
+			$plat=$ligne['Nom_plat'];
+			echo "<li>{$plat} </li>";
 
-<h1>Mon profil</h1>
-<table> 
+		}
+		echo "</ul>";
+		echo "<p> <a href='plat.php'>Ajouter ou supprimer </a> une platforme</p> ";
 
-<tr>
-<th> Nom </th>
-<th>Prénom</th>
-<th>Déscription</th>
-</tr>
-
-<?php
-
-
-
-echo "<tr><td>",
- $_SESSION['nom']."</td><td>",
- $_SESSION['prenom']."</td><td>";
+	}
 ?>
 
 
-
-</table>
-
-
-
-<p>
-<a href="mesfilms.php">Mes films  </a></p>
-<a href="mesplateformes.php">Mes plateformes de streaming  </a></p>
 </body>
 </html>

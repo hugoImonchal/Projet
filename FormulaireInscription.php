@@ -84,7 +84,7 @@ echo '
     ';
 	
 	if ($ispseudo==0){
-		echo '<p> Le pseudo '.$pseudo.' est deja pris. Veuillez changer. </p>';
+		echo '<p> <span>Le pseudo '.$pseudo.' est deja pris. Veuillez changer. </span></p>';
 	}
 	echo '
     <p> Séléctionnez votre âge </p>

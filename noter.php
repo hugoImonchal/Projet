@@ -37,7 +37,7 @@ content="text/html; charset=UTF-8" />
            $bdd->prepare($sql)->execute();
          }
 		 visionne($id,$pseudo);
-         echo  '<meta http-equiv="Refresh" content="0; url=./profil.php" />';
+         echo  '<meta http-equiv="Refresh" content="0; url=./mesfilms.php" />';
     
 	}
 	else 
