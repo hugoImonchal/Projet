@@ -51,25 +51,25 @@ function getnote($id_film,$pseudo){
 	}
 	?> 
 
-	<header class="main">	
+<header class="main">	
 		<nav>
 			<ul class="menu">
-			<li>
+			<li class= "list">
 				<a href="index.php">Where2Watch</a>
 				</li>
-				<li>
+				<li class= "list">
 				<a href="acceuil.php">Accueil</a>
 				</li>
 				<?php
 				if(isset($_SESSION['utili'])){
-					echo '<li> <a href="deconnexion.php">Deconnexion </a> </li>';
-					echo '<li> <a href="profil.php"> Profil </a> </li>';
+					echo '<li class= "list"> <a href="deconnexion.php">Deconnexion </a> </li>';
+					echo '<li class= "list"><a href="profil.php"> Profil </a> </li>';
 				}
 				else{
-				echo '<li> <a href="connexion.php"> Connexion </a> </li> ';
-				echo '<li> <a href="FormulaireInscription.php"> Inscription </a> </li>';} ?>
+				echo '<li class= "list"> <a href="connexion.php"> Connexion </a> </li> ';
+				echo '<li class= "list"> <a href="FormulaireInscription.php"> Inscription </a> </li>';} ?>
 				
-				<li>
+				<li class= "list">
 				<a href="contact/contact.php">Contact</a>
 				</li>
 				
@@ -79,6 +79,36 @@ function getnote($id_film,$pseudo){
 
 <section class= "fond">
 	
+
+
+
+<div class= "container">
+	<div class="information-bar">
+
+		<ul id= "pro">
+			<li ><a href="profil.php"> Mon Profil</a></li>
+			<li class= "active"><a href="mesfilms.php">Mes films  </a> </li>
+			<li ><a href="mesplateformes.php">Mes plateformes de streaming  </a></li>
+
+		</ul>
+
+		<div class="profile">
+			<img src="images/chiot.jpg" alt="image de profil">
+<p class="name">
+<?php echo $_SESSION['nom'];
+	echo "   ";
+	echo $_SESSION['prenom'];
+ ?> </p>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+
+
 
     
     
