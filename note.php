@@ -77,7 +77,8 @@ function getnote($id_film,$pseudo){
         echo '
              <p>Nouvelle note :
             <input type="number" name="newnote" min="0" max="5"></p>';
-        echo '<input type="hidden" name="actnote" value="'.$note.'"><input type="hidden" name="id" value="'.$id_film.'"><input type="submit" value="valider"></form>';
+        echo '<input type="hidden" name="actnote" value="'.$note.'"><input type="hidden" name="id" value="'.$id_film.'">
+		<input type="submit" value="valider"></form>';
 	}
 ?>
 

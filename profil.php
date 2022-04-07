@@ -56,10 +56,10 @@ function getnote($id_film,$pseudo){
 			<ul class="menu">
 			<li class= "list">
 				<a href="index.php">Where2Watch</a>
-				</li>
-				<li class= "list">
+			</li>
+			<li class= "list">
 				<a href="acceuil.php">Accueil</a>
-				</li>
+			</li>
 				<?php
 				if(isset($_SESSION['utili'])){
 					echo '<li class= "list"> <a href="deconnexion.php">Deconnexion </a> </li>';
@@ -93,11 +93,12 @@ function getnote($id_film,$pseudo){
 
 		<div class="profile">
 			<img src="images/chiot.jpg" alt="image de profil">
-<p class="name">
-<?php echo $_SESSION['nom'];
-	echo "   ";
-	echo $_SESSION['prenom'];
- ?> </p>
+			<p class="name">
+			<?php echo $_SESSION['nom'];
+			echo "   ";
+			echo $_SESSION['prenom'];
+ 			?> 
+			</p>
 
 		</div>
 

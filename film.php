@@ -53,6 +53,17 @@ function getnote($id_film,$pseudo){
     }
     return $note;
 }
+
+function getvu($id_film,$pseudo){
+	$bdd = getBD();
+	$rep = $bdd->query("select id_vu from vu where id_film=$id_film and pseudo='$pseudo'");
+	while ($mat =$rep->fetch()) 
+	$vu=0;
+	{
+		$vu=$vu+1;
+	}
+	return $vu;
+}
 ?>
 <?php
 	include('php/bdd.php');
@@ -91,7 +102,13 @@ function getnote($id_film,$pseudo){
 					$pseudo=$_SESSION['pseudo'];
 					echo "Votre note : ".getnote($id,$pseudo)."<br/>";
 					echo '<a href="note.php?id='.$id.'"> Notez </a> le film ';
-
+					echo '<br>';
+					$vu=getvu($id,$pseudo);
+					if($vu==0){
+						echo "Vous n'avez pas vu ce film  :";
+					}
+					else{echo "Vous avez vu ce film  :";}
+					echo '<a href="vu.php?id='.$id.'"> modifier </a>';
 				}
 			
 			}

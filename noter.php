@@ -5,7 +5,17 @@
         $sql="INSERT INTO vu (id_film, pseudo) VALUES (?,?)";
        $bdd->prepare($sql)->execute([$id,$pseudo]);
 
-    } ?>
+    } 
+	function getvu($id_film,$pseudo){
+		$bdd = getBD();
+		$rep = $bdd->query("select id_vu from vu where id_film=$id_film and pseudo='$pseudo'");
+		while ($mat =$rep->fetch()) 
+		$vu=0;
+		{
+			$vu=$vu+1;
+		}
+		return $vu;
+	}?>
 <?php session_start(); ?>
 <html lang="fr">
 <head>
@@ -36,7 +46,10 @@ content="text/html; charset=UTF-8" />
             $sql="UPDATE noter SET Note =".$note." WHERE noter.IdFilm =".$id." AND noter.pseudo ='".$pseudo."'";
            $bdd->prepare($sql)->execute();
          }
-		 visionne($id,$pseudo);
+		 $vu=getvu($id,$pseudo);
+			if($vu==0){
+				visionne($id,$pseudo);
+			}
          echo  '<meta http-equiv="Refresh" content="0; url=./mesfilms.php" />';
     
 	}

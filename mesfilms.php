@@ -23,6 +23,7 @@ function getfilm($id){
 	{
 		$titre=$mat['Titre'];
     }
+	$rep ->closeCursor();
     return $titre;
 }
 function getnote($id_film,$pseudo){
@@ -32,6 +33,7 @@ function getnote($id_film,$pseudo){
 	{
 		$note=$mat['Note'];
     }
+	$rep ->closeCursor();
     return $note;
 
 }
@@ -67,7 +69,8 @@ function getnote($id_film,$pseudo){
 				}
 				else{
 				echo '<li class= "list"> <a href="connexion.php"> Connexion </a> </li> ';
-				echo '<li class= "list"> <a href="FormulaireInscription.php"> Inscription </a> </li>';} ?>
+				echo '<li class= "list"> <a href="FormulaireInscription.php"> Inscription </a> </li>';
+				} ?>
 				
 				<li class= "list">
 				<a href="contact/contact.php">Contact</a>
@@ -117,7 +120,7 @@ function getnote($id_film,$pseudo){
 	{ 
 		$pseudo=$_SESSION['pseudo'];
 		echo '<p>Vos films visionés</p>';
-		echo '<table><tr><th>id</th><th>Titre</th><th>Votre note</th></tr>';
+		echo '<table><tr><th>Titre</th><th>Votre note</th></tr>';
         $bdd=getBD();
         $sql="select * from vu where pseudo='$pseudo'";
 		$rep=$bdd->query($sql);
@@ -131,7 +134,7 @@ function getnote($id_film,$pseudo){
 			$note=getnote($id_film,$pseudo);
 			//echo $note;				
 			
-		 	echo "<tr><td>{$id_film}</td><td>{$titre}</td><td>{$note}<br><a href='note.php?id={$id_film}'>modifier</a></td></tr>"; //<br><a href='note.php'>modifier</a>
+		 	echo "<tr><td><a href='film.php?id='{$id_film}'>{$titre}</a></td><td>{$note}<br><a href='note.php?id={$id_film}'>modifier</a></td></tr>"; //<br><a href='note.php'>modifier</a>
 		}
 		$rep ->closeCursor();
 		echo '</table>';

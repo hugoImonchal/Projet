@@ -20,13 +20,27 @@ content="text/html; charset=UTF-8" />
        $bdd->prepare($sql)->execute([$id,$pseudo]);
 
     }
+	function getvu($id_film,$pseudo){
+		$bdd = getBD();
+		$rep = $bdd->query("select id_vu from vu where id_film=$id_film and pseudo='$pseudo'");
+		while ($mat =$rep->fetch()) 
+		(int)$vu=0;
+		{
+			$vu+=1;
+		}
+		return (int)$vu;
+	
+	}
 	if(isset($_SESSION['utili']))
 	{ 
 		 $pseudo= $_SESSION['pseudo'];
          $id=$_GET['id'];
          $ajout=$_POST['ajout'];
          if($ajout=1){
-            visionne($id,$pseudo);
+			$vu=getvu($id_film,$pseudo);
+			if($vu==0){
+				visionne($id,$pseudo);
+			}
          }else{
             $bdd=getBD();
             $sql="delete from vu WHERE vu.id_film =".$id." AND vu.pseudo ='".$pseudo."'";
