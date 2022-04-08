@@ -1,3 +1,4 @@
+<!-- Cette page sert à ce que l'utilisateur se connect -->
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">

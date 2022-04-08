@@ -1,3 +1,5 @@
+<!-- Cette page est connécté à la BD et recupere toutes les informations
+de l'utilisateur lors de son inscription pour les enregistrer dans la table utilisateur-->
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">

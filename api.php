@@ -1,10 +1,15 @@
+<!-- Cette page permet d'appeler des api de TMDB pour recolter des informations relatives au films, à leur genre 
+et au plateformes de streaming. Ces informations sont ensuite insérées dans notre bd.
+Le code de cette page est en commentaire, la page est inutilisable par un utilisateur de notre site
+Les fonctions de cette pages permettent d'ajouter si beoin de nouveaux films à notre bd, et avec certaines
+modifications dans les requetes sql, de modifier pour mettre à jours ces informations. -->
 <html lang="fr">
 
 <head>
 	<title>api</title>
 
 <?php
-// Code d'appelle aux api inspiré du code snippet disponible sur https://imdb-api.com/API
+// Code d'appelle aux api inspiré du code snippet cURL disponible sur https://imdb-api.com/API
 session_start();
 include('php/bdd.php');
 
@@ -48,6 +53,7 @@ curl_setopt_array($curl, array(
 }
 //fillGenre();
 
+
 //Fonction permettant de remplir la table plateforme
 function fillPlat(){
 	$curl = curl_init();
@@ -90,7 +96,9 @@ curl_setopt_array($curl, array(
 //fillPlat();
 
 
-
+//Fonction prenant en parametre un identifiant de film et qui remplie la table etre_disponible dans laquelle 
+//on retrouve dans chaque ligne un identifiant de film et un nom de plateforme sur laquel ce film est disponible.
+//Cette fonction peut etre utiliser pour mettre à jours la disponibilité des films sur les plateformes de straming.
 function disponible($id){
 	$curl = curl_init();
  
@@ -132,7 +140,9 @@ curl_setopt_array($curl, array(
 //disponible(508);
 
 
-//fonction qui permet d'enregistrer toutes les informations d'un film
+//fonction qui prend en parametre un identifiant de film et  permet de recuperer et d'enregistrer toutes les
+// informations de ce film (titre, date, description, note moyenne, url de l'affiche, identifiant)
+// dans la table film de notre BD
 function enregistrement_film($id){
 
 	$curl = curl_init();
@@ -185,6 +195,11 @@ curl_setopt_array($curl, array(
 
 
 // Definition de $_SESSION['data'] qui contient la liste des id_TMDB des films
+//Necessite ../data/TMDB_10000_Popular_Movies.csv trouvé sur https://www.kaggle.com/datasets/ritayandhara/tmdb-dataset 
+//Ce fichier contient des informations relatives au 10 000 films les plus populaires de TMDB dont leurs
+// identifiants en premiere colonne ($row[0])
+//Peut etre remplacé par n'importe quel fichier csv contenant des identifiant de films TMDB
+
 /*
 if(!isset($_SESSION['data'])){
 	//Recuperation des id_TMDB dans le csv

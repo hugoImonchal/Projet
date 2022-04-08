@@ -1,5 +1,7 @@
-
-<?php //source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/
+<!-- source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/ 
+Cette page est connécté à la BD et resence tous les plateformes de streaming disponible, 
+l'utilisateur peut faire des recherches par titre de plateformes-->
+<?php
 session_start();
 ini_set('display_errors', 'on');
 
@@ -10,7 +12,7 @@ ini_set('display_errors', 'on');
 
 <html>
 <head>
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/styleconnexion.css" type="text/css" media="screen" />
         <meta http-equiv="Content-Type"content="text/html; charset=UTF-8" />
         <title>Accueil</title>
         <header class="main">	
@@ -77,11 +79,9 @@ ini_set('display_errors', 'on');
 				echo '<br>';
 				if($resultats->rowCount()>0){
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){
-				
-                        echo "<a href='plateforme.php?Nom_plat=" . $d['Nom_plat'] . "'>" .  $d['Nom_plat'] . "</a>";
 						echo '<br>';
 						echo   "<a href='plateforme.php?Nom_plat=".$d['Nom_plat']."'> <img class='plat' src= ".$d['logo']. " alt= 'image' >" ."<a/>";
-						//echo '<br>';
+					
   
 					}
 					$resultats->closeCursor();
