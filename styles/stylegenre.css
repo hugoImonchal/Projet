@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=PT+Sans:wght@700&family=Roboto&family=Roboto+Condensed:ital,wght@1,300&display=swap');
+
+*{
+	margin:0px;
+	padding:0px;
+	box-sitting: border-box;
+
+}
+
+html{
+	font-size: 62.5%;
+    background-image: url("../images/plateform.jpg");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position:center;
+}
+
+#cc{
+	color: black;
+	font-size:2em;
+	font-weight: bold;
+}
+
+
+
+h1{
+	font-size:2.6rem;
+    margin: auto;
+    text-align: center;
+    background-color: black;
+    opacity: 0.7;
+   
+    width: 250px;
+    color: white;
+    padding: 1em 2em;
+ 
+}
+
+h2{
+	font-size:4.8rem;
+	font-family: 'PT Sans', sans-serif;
+}
+
+h3{
+	font-size:3rem;
+	font-family: 'PT Sans', sans-serif;
+}
+
+h4,h5{
+	font-size:2.8rem;
+	font-family: 'PT Sans', sans-serif;
+}
+
+a{
+	color:white;
+	text-decoration:none;
+}
+
+li{
+	font-size:2rem;
+	
+}
+
+.main{
+	background: red;
+	color: white;
+
+}
+
+nav{
+	min-height:10vh;
+	display: flex;
+	width:90%;
+	margin:auto;
+}
+
+nav ul{
+	display:flex;
+	flex: 1 1 40rem;
+	justify-content: space-around;
+	align-items:center;
+	list-style:none;
+	
+}
+
+#logo{
+	flex: 1 1 40rem;
+	font-family: great-day;
+	font-family: 'Dancing Script', cursive;
+}
+
+.fond{
+	min-height:90vh;
+	background-size: cover;
+	background-position:center;
+	color: black;
+	display:flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items:center;
+	
+}
+
+.fond h3{
+	padding:4rem;
+}
+
+p a{
+    font-size: 2em;
+    color:black;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 10px;
+    color:black;
+}    
+
+form{
+    background-color: #f5f5f5;
+    padding:40px 60px;
+	width: 150px;
+    border-radius: 10px;
+    margin: auto;
+    /* min-width: 300px; */
+
+
+}
+
+form h1{
+    color:red;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+form .input{
+    display: flex;
+    flex-direction: column;
+
+}
+
+form .input input[type="text"], input[type="password"]{
+    padding:15px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 15px;
+}
+
+span{
+    color:red;
+
+}
+
+input[type="submit"]{
+    padding: 15px 25px ;
+    border:none;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color:black;
+    color: white;
+
+}
+
+.film a{
+    color: black;
+}
+
+.image{
+	height: 200px;
+	width: 400px;
+	display: block;
+	margin: auto;
+	border-radius: 50%;
+
+
+}
+
+img{
+    border-radius: 50%;
+    border: solid black 3px;
+    display: block;
+    margin: auto;
+
+}
+
+#col a{
+    color: black;
+    font-weight: bold;
+    /* display: block; */
+    margin: auto;
+    text-align: center;
+}
+
+.bjr li a{
+    display: block;
+    margin: auto;
+    text-align: center;
+    color: black;
+
+    font-weight: bold;
+}
+
