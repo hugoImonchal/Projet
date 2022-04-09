@@ -1,3 +1,4 @@
+<!-- Cette page deconnect l'utilisateur-->
 <?php
 
 session_start();

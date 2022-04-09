@@ -1,3 +1,4 @@
+<!-- Cette page permet à l'utilisateur de créer un compte-->
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -82,7 +83,7 @@ echo '
    
     <input type="text" placeholder="Entrer votre pseudo" name="pseudo" value="'.$pseudo.'"/>
     ';
-	
+	//verification si le pseudo est disponible (information retounée par formulair.php)
 	if ($ispseudo!=1){
 		echo '<p> <span>Le pseudo '.$pseudo.' est deja pris. Veuillez changer. </span></p>';
 	}
@@ -103,10 +104,9 @@ echo '
     
     <input type="password" placeholder="Confirmer votre mot de passe" name="confmdp" value=""/>
     </p>';
+	// verification si le mdp et le mdp confirmé sont les memes (information retounée par formulair.php)
 	if ($ismdp!=1){
 		echo '<p> Les deux mots de passe doivent etre identique. </p>';
-		echo $ispseudo;
-		echo $ismdp;
 	}
 	echo '
     

@@ -1,4 +1,7 @@
-<?php //source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/
+<!-- source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/ 
+Cette page est connécté à la BD et resence tous les films disponibles
+L'utilisateur peut faire des recherches par titre de film-->
+<?php
 session_start();
 ini_set('display_errors', 'on');
 

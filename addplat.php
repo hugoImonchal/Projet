@@ -1,3 +1,5 @@
+<!-- Cette page permet à un utilisateur d'ajouter une plateforme dans sa liste de plateforme et
+ renvoie immediatement sur plat.php -->
 <!DOCTYPE html>
 <?php include("./php/bdd.php"); ?>
 <?php session_start(); ?>

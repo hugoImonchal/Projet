@@ -1,9 +1,12 @@
+<!-- Cette page est connécté à la BD et recupere toutes les informations
+de l'utilisateur lors de son inscription pour les enregistrer dans la table utilisateur-->
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <?php
 include('php/bdd.php');
 //fonction permettant d'enregistrer dans la bd sql le information du client
+//prend en parametre un nom, prenom, pseudo,age, adresse mail et un mot de passe
 function enregistrer($nom,$prenom,$pseudo,$email,$age,$mdp)
 {
 	$bdd= getBD();

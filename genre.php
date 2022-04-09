@@ -1,3 +1,5 @@
+<!-- Cette page est connécté à la BD et resence tous les films disponible 
+selon le genre choisi-->
 <?php session_start(); 
 ini_set('display_errors', 'on');
 ?>

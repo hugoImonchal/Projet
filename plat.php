@@ -1,3 +1,4 @@
+<!-- Cette page affiche la liste des plateformes de streaming auxquelles l'utilisateur a acces -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>

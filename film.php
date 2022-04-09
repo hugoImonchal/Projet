@@ -1,3 +1,5 @@
+<!-- Cette page est connécté à la BD et resence toutes les information l
+sur le film choisi (plateformes, genre, dates...)-->
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -44,6 +46,8 @@ content="text/html; charset=UTF-8" />
 <br />
 <p>
 <?php
+//Cette fonction prend en parametre un identifiant de film et un pseudo d'utiliateur et retourne la note 
+//que l'utilisateur a attribué à ce film (et "Pas de note" s'il n'a pas noté le film)
 function getnote($id_film,$pseudo){
     $bdd = getBD();
 	$rep = $bdd->query("select ifnull((select Note from noter where IdFilm=$id_film and pseudo='$pseudo'),'Pas de note') As Note");
@@ -54,11 +58,15 @@ function getnote($id_film,$pseudo){
     return $note;
 }
 
+//Cette fonction prend en parametre un identifiant de film et un pseudo d'utiliateur et retourne la nombre
+// de ligne dans la table vu ou apparaissent le pseudo et l'identifiant
+//en pratique cette fonction et utilisée pour savoir quel film a vu l'utilisateur (en théorie retourne 0 ou 1)
+//(utilisation de cette fonction pour correction d'un bug qui ecrivais une nouvelle ligne dans la table vu lorsque l'utilisateur modifiais la note) 
 function getvu($id_film,$pseudo){
 	$bdd = getBD();
 	$rep = $bdd->query("select id_vu from vu where id_film=$id_film and pseudo='$pseudo'");
-	while ($mat =$rep->fetch()) 
 	$vu=0;
+	while ($mat =$rep->fetch()) 
 	{
 		$vu=$vu+1;
 	}

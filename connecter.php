@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- Cette page va chercher dans la base de données les informations
+entrer par l'utilisateur pour se connecter.
+Si l'utilisateur entre de mauvais identifier il ne pourras pas se connecter -->
 <html lang="fr">
 <head>
 <meta http-equiv="Content-Type"

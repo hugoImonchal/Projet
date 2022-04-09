@@ -1,5 +1,7 @@
-
-<?php //source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/
+<!-- source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/ 
+Cette page est connécté à la BD et resence tous les plateformes de streaming disponible, 
+l'utilisateur peut faire des recherches par titre de plateformes-->
+<?php
 session_start();
 ini_set('display_errors', 'on');
 

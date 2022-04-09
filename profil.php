@@ -1,3 +1,5 @@
+<!-- Cette page est la page pricipale du profil de l'utilisateur, elle permet
+ d'acceder à sa liste de film et à ses plateformes de streaming. -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,6 +18,7 @@ content="text/html; charset=UTF-8" />
 
 <?php session_start(); ?>
 <?php 
+//Cette fonction prend en parametre un identifiant de film et retourne le titre de ce film.
 function getfilm($id){
 	$bdd = getBD();
 	$rep = $bdd->query("select * from film where IdFilm=$id ");
@@ -25,6 +28,8 @@ function getfilm($id){
     }
     return $titre;
 }
+//Cette fonction prend en parametre un identifiant de film et un pseudo d'utiliateur et retourne la note 
+//que l'utilisateur a attribué à ce film (et "Pas de note" s'il n'a pas noté le film)
 function getnote($id_film,$pseudo){
     $bdd = getBD();
 	$rep = $bdd->query("select ifnull((select Note from noter where IdFilm=$id_film and pseudo='$pseudo'),'Pas de note') As Note");

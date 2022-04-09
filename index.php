@@ -1,3 +1,4 @@
+<!-- Cette page est la page d'acceuil de notre site-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>

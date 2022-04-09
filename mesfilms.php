@@ -1,3 +1,5 @@
+<!-- Cette page affiche la liste des films visionnés par l'utilisateur ainsi que la note qu'il a
+ attribué à ce film -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,6 +18,7 @@ content="text/html; charset=UTF-8" />
 
 <?php session_start(); ?>
 <?php 
+//Cette fonction prend en parametre un identifiant de film et retourne le titre de ce film.
 function getfilm($id){
 	$bdd = getBD();
 	$rep = $bdd->query("select * from film where IdFilm=$id ");
@@ -26,6 +29,9 @@ function getfilm($id){
 	$rep ->closeCursor();
     return $titre;
 }
+
+//Cette fonction prend en parametre un identifiant de film et un pseudo d'utiliateur et retourne la note 
+//que l'utilisateur a attribué à ce film (et "Pas de note" s'il n'a pas noté le film)
 function getnote($id_film,$pseudo){
     $bdd = getBD();
 	$rep = $bdd->query("select ifnull((select Note from noter where IdFilm=$id_film and pseudo='$pseudo'),'Pas de note') As Note");
@@ -134,7 +140,7 @@ function getnote($id_film,$pseudo){
 			$note=getnote($id_film,$pseudo);
 			//echo $note;				
 			
-		 	echo "<tr><td><a href='film.php?id='{$id_film}'>{$titre}</a></td><td>{$note}<br><a href='note.php?id={$id_film}'>modifier</a></td></tr>"; //<br><a href='note.php'>modifier</a>
+		 	echo "<tr><td><a href='film.php?IdFilm={$id_film}'>{$titre}</a></td><td>{$note}<br><a href='note.php?id={$id_film}'>modifier</a></td></tr>"; //<br><a href='note.php'>modifier</a>
 		}
 		$rep ->closeCursor();
 		echo '</table>';
