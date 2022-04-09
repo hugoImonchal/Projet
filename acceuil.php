@@ -10,7 +10,7 @@ ini_set('display_errors', 'on');
 
 <html>
 <head>
-<link rel="stylesheet" href="styles/styleconnexion.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/styleaccueil.css" type="text/css" media="screen" />
         <meta http-equiv="Content-Type"content="text/html; charset=UTF-8" />
         <title>Accueil</title>
         <header class="main">	
@@ -47,10 +47,11 @@ ini_set('display_errors', 'on');
     <br>
     <br>
 </head>
+<p>
 <a href="accueilfilm.php"> Recherche par film</a>
 <br>
 <a href="accueilgenre.php"> Recherche par genre</a>
-
+</p>
 <?php include('data.php');
 	?>
 	<form method='post'>
@@ -77,7 +78,7 @@ ini_set('display_errors', 'on');
 				echo '<br>';
 				if($resultats->rowCount()>0){
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){
-						echo '<br>';
+				
 						echo   "<a href='plateforme.php?Nom_plat=".$d['Nom_plat']."'> <img class='plat' src= ".$d['logo']. " alt= 'image' >" ."<a/>";
 					
   

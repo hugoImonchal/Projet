@@ -9,7 +9,7 @@ ini_set('display_errors', 'on');
 
 <html>
 <head>
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/styleaccueil.css" type="text/css" media="screen" />
         <meta http-equiv="Content-Type"content="text/html; charset=UTF-8" />
         <title>Accueil</title>
         <header class="main">	

@@ -9,7 +9,7 @@ ini_set('display_errors', 'on');
 
 <html>
 <head>
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/styleaccueil.css" type="text/css" media="screen" />
         <meta http-equiv="Content-Type"content="text/html; charset=UTF-8" />
         <title>Accueil</title>
         <header class="main">	
@@ -40,16 +40,15 @@ ini_set('display_errors', 'on');
 		</nav>
 	</header>
     </head>
-    <br>
-    <br>
-    <br>
+    
     <br>
     <br>
 </head>
     <body>
+		<p>
 	<a href="acceuil.php"> Recheche par plateformes</a><br>
 <a href="accueilgenre.php"> Recherche par genre</a> <br>
-
+</p>
 	<?php include('data.php');
 	?>
 	<form method='post'>
@@ -76,11 +75,12 @@ ini_set('display_errors', 'on');
 				echo '<br>';
 				if($resultats->rowCount()>0){
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){
-				
-                        echo "<a class='film' href='film.php?IdFilm=" . $d['IdFilm'] . "'>" . $d['Titre'] . "</a>";
-						echo '<br>';
+						echo "<p class= 'film'>";
+                        echo "<a  href='film.php?IdFilm=" . $d['IdFilm'] . "'>" . $d['Titre'] . "</a>";
+						
+		
 						echo   "<a href='film.php?IdFilm=".$d['IdFilm']."'> <img src= ".$d['Affiche']. " alt= 'image' >" ."<a/>";
-						//echo '<br>';
+						echo "</p>";
   
 					}
 					$resultats->closeCursor();
