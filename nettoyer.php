@@ -1,4 +1,5 @@
-<!-- Ce fichier permet de supprimer la table plateforme de la bd en supprimant une plateforme si aucun film n'est dispo dessus -->
+<!-- Ce fichier permet de supprimer la table plateforme de la bd en supprimant une plateforme si aucun 
+film n'est dispo dessus -->
 <!DOCTYPE html>
 <html lang="fr">
 <?php

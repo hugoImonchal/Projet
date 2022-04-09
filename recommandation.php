@@ -1,3 +1,4 @@
+<!-- Cette page permet de recommander une liste de film pour un utilisateur -->
 <!DOCTYPE html>
 <?php session_start(); ?>
 <html lang="fr">
@@ -12,6 +13,7 @@ content="text/html; charset=UTF-8" />
 
 <?php include("php/bdd.php"); ?>
 <?php 
+//Cette fonction prend en parametre un identifiant de film et retourne le titre de ce film.
 function getfilm($id){
 	$bdd = getBD();
 	$rep = $bdd->query("select * from film where IdFilm=$id ");
@@ -23,6 +25,7 @@ function getfilm($id){
     return $titre;
 }
 
+//Cette fonction retounr la liste de tous les utilisateurs du site
 function getAllPseudo(){
 	$bdd = getBD();
 	$rep = $bdd->query("select pseudo from utilisateur");
@@ -35,6 +38,7 @@ function getAllPseudo(){
     return $array;
 
 }
+//Cette fonction retourne la liste de tous les films du site 
 function getAllFilm(){
 	$bdd = getBD();
 	$rep = $bdd->query("select IdFilm from film");
@@ -46,6 +50,8 @@ function getAllFilm(){
 	$rep ->closeCursor();
     return $array;
 }
+//Cette fonction prend en parametre l'identifiant d'un film et un pseudo
+//retourne l'IdVu (>0) de ce film et 0 si ce film n'a pas été vu par l'utilisateur
 function seen($id_film,$pseudo){
     $bdd = getBD();
 	$rep = $bdd->query("select ifnull((select id_vu from vu where id_film=$id_film and pseudo='$pseudo'), '0') As id_vu");
@@ -57,6 +63,10 @@ function seen($id_film,$pseudo){
 
 	return (int)$vu;
 }
+
+//Cette fonction prend en parametre un pseudo et retourne une liste du genre [IdFilm1 => noteFilm1,...,IdFilmN => noteFilmN]
+//clé: Identifiant du film
+//valeure: note de 'pseudo' attribuué à ce film (0 si pas de note disponible)
 function user_film_vector($pseudo){
 	$bdd = getBD();
 	$rep = $bdd->query("select IdFilm from film");
@@ -80,9 +90,9 @@ function user_film_vector($pseudo){
 
 }
 
-
+//Cette fonction prends en parametre un tableau (contenant des valeurs numerique)
+//Elle retourne la même liste mais centrée et réduite
 function centre_reduit ($tableau){
-	//use Phpml\Math\Statistic\Mean;
 	$tab=[];
 	foreach($tableau as $key => $value ){
 		$ligne=$value;
@@ -113,6 +123,9 @@ function centre_reduit ($tableau){
 	}
 	return $tab;
 }
+
+//Cette fonction prend en parametre un tableau et calcul puis retourne 
+//la matrice de correlation de pearson de ce tableau
 function similarite($tab){
 	$mat=[];
 	foreach($tab as $k1 => $v1 ){

@@ -1,16 +1,26 @@
+<!-- Cette page est appelée par note.php et ajoute ou modifie la note d'un utilisateur à un film.
+Le film noté sera également inscrit dans la table vu s'il n'y est pas déja inscrit. -->
+
 <!DOCTYPE html>
 <?php include("./php/bdd.php");
+//Cette fonction permet d'ajouter un film dans la table vu
+//Prend en parametre un identifiant de film et un pseudo
     function visionne($id,$pseudo){
         $bdd=getBD();
         $sql="INSERT INTO vu (id_film, pseudo) VALUES (?,?)";
        $bdd->prepare($sql)->execute([$id,$pseudo]);
 
-    } 
+    }
+
+//Cette fonction prend en parametre un identifiant de film et un pseudo d'utiliateur et retourne la nombre
+// de ligne dans la table vu ou apparaissent le pseudo et l'identifiant
+//en pratique cette fonction et utilisée pour savoir quel film a vu l'utilisateur (en théorie retourne 0 ou 1)
+//(utilisation de cette fonction pour correction d'un bug qui ecrivais une nouvelle ligne dans la table vu lorsque l'utilisateur modifiais la note) 
 	function getvu($id_film,$pseudo){
 		$bdd = getBD();
 		$rep = $bdd->query("select id_vu from vu where id_film=$id_film and pseudo='$pseudo'");
-		while ($mat =$rep->fetch()) 
 		$vu=0;
+		while ($mat =$rep->fetch()) 
 		{
 			$vu=$vu+1;
 		}

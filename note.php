@@ -1,3 +1,4 @@
+<!-- Cette page contient un formulaire permettant à un utilisateur d'ajouter ou modifier une note pour un film -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,6 +14,8 @@ content="text/html; charset=UTF-8" />
 <?php include("./php/bdd.php"); ?>
 <?php session_start(); ?>
 <?php 
+//Cette fonction prend en parametre un identifiant de film et un pseudo d'utiliateur et retourne la note 
+//que l'utilisateur a attribué à ce film (et "Pas de note" s'il n'a pas noté le film)
 function getnote($id_film,$pseudo){
     $bdd = getBD();
 	$rep = $bdd->query("select ifnull((select Note from noter where IdFilm=$id_film and pseudo='$pseudo'),'Pas de note') As Note");

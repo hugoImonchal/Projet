@@ -65,8 +65,8 @@ function getnote($id_film,$pseudo){
 function getvu($id_film,$pseudo){
 	$bdd = getBD();
 	$rep = $bdd->query("select id_vu from vu where id_film=$id_film and pseudo='$pseudo'");
-	while ($mat =$rep->fetch()) 
 	$vu=0;
+	while ($mat =$rep->fetch()) 
 	{
 		$vu=$vu+1;
 	}

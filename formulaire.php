@@ -6,6 +6,7 @@ de l'utilisateur lors de son inscription pour les enregistrer dans la table util
 <?php
 include('php/bdd.php');
 //fonction permettant d'enregistrer dans la bd sql le information du client
+//prend en parametre un nom, prenom, pseudo,age, adresse mail et un mot de passe
 function enregistrer($nom,$prenom,$pseudo,$email,$age,$mdp)
 {
 	$bdd= getBD();

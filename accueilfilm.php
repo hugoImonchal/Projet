@@ -1,6 +1,7 @@
 <!-- source du code : https://www.developpez.net/forums/d1930668/php/php-base-donnees/script-php-formulaire-recherche-simple-bdd/ 
-Cette page est connécté à la BD et resence tous les films disponible, 
-l'utilisateur peut faire des recherches par titre de film-->
+Cette page est connécté à la BD et resence 50 films disponible, pour acceder a la totaliter des films
+en bas de la page en accedant à touslesfilms.php
+L'utilisateur peut faire des recherches par titre de film-->
 <?php
 session_start();
 ini_set('display_errors', 'on');
