@@ -1,0 +1,173 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sitting: border-box;
+
+}
+
+html{
+	font-size: 62.5%;
+	
+	
+}
+
+h1{
+	font-size:2.6rem;
+}
+
+h2{
+	font-size:4.8rem;
+	font-family: 'PT Sans', sans-serif;
+}
+
+h3{
+	font-size:3rem;
+	font-family: 'PT Sans', sans-serif;
+}
+
+h4,h5{
+	font-size:2.8rem;
+	font-family: 'PT Sans', sans-serif;
+}
+
+a{
+	color:white;
+	text-decoration:none;
+}
+
+
+.main{
+	background-color: darkslategray;
+	color: white;
+
+}
+
+nav{
+	min-height:10vh;
+	display: flex;
+	width:90%;
+	margin:auto;
+}
+
+nav ul{
+	display:flex;
+	flex: 1 1 40rem;
+	justify-content: space-around;
+	align-items:center;
+	list-style:none;
+	
+}
+
+#logo{
+	flex: 1 1 40rem;
+	font-family: 'Dancing Script', cursive;
+}
+
+.fond{
+	min-height:90vh;
+	background: url("../images/fac.jpg");
+	background-size: cover;
+	background-position:center;
+	color: white;
+	display:flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items:center;
+	
+}
+
+.fond h3{
+	padding:4rem;
+}
+
+
+
+
+.container{
+	position: relative;
+	margin: auto;
+	width: 650px;
+	height: 250px;
+	background-size: cover;
+	border-radius: 5px;
+	overflow: hidden;
+    background-color: aliceblue;
+    opacity: 0.7;
+
+}
+
+.information-bar{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 65px;
+	background-color:black;
+
+}
+
+.profile{
+	position: absolute;
+	display: flex;
+	align-items: center;
+	bottom: 20px;
+	left:25px;
+}
+
+.profile img{
+
+
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 3px solid gray;
+
+}
+
+#pro{
+	position: relative;
+	width: 100%;
+	display: flex;
+	padding-left: 200px;
+	height: 100%;
+	margin: 0;
+
+}
+
+.list{
+	font-size:2em;
+}
+
+
+#pro li{
+	font-size: 1.5em;
+	list-style: none;
+	cursor: pointer;
+	color:white;
+	padding: 1.5em 1em ;
+	
+}
+
+#pro li:hover, .active{
+	color: white;
+	border-bottom: 3px solid blue;
+}
+
+.name{
+	color:black;
+	margin-left: 1.5em;
+	font-size: 2em;
+	font-weight:bolder;
+	background-color: aliceblue;
+	border-radius: 50%;
+	padding: 5px;
+}
+
+p{
+    background-color: aliceblue;
+    color:black;
+    margin: auto;
+    padding: 10px;
+	font-family: 'PT Sans', sans-serif;
+
+
+}
