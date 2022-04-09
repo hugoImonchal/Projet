@@ -93,21 +93,26 @@ content="text/html; charset=UTF-8" />
 	{ 
 		$pseudo=$_SESSION['pseudo'];
         $bdd=getBD();
-		echo "<p> Vos platformes de streaming: </p>";
+		echo "<h1> Mes platformes de streaming: </h1>";
 		$sql="select * from etre_inscrit where pseudo='$pseudo'";
 		$rep=$bdd->query($sql);
-		echo "<ul>";
+		echo "<ul class= 'plat'>";
 		while ($ligne = $rep ->fetch()) {
 			$plat=$ligne['Nom_plat'];
 			echo "<li>{$plat} </li>";
 
 		}
 		echo "</ul>";
+		echo "<br>";
 		echo "<p> <a href='plat.php'>Ajouter ou supprimer </a> une platforme</p> ";
 
 	}
 ?>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>

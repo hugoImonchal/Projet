@@ -118,14 +118,14 @@ function getnote($id_film,$pseudo){
 
 
 
-
     
     
     <?php
+	echo "<br>";
 	if(isset($_SESSION['utili']))
 	{ 
 		$pseudo=$_SESSION['pseudo'];
-		echo '<p>Vos films visionés</p>';
+		echo '<h1>Mes films visionés</h1>';
 		echo '<table><tr><th>Titre</th><th>Votre note</th></tr>';
         $bdd=getBD();
         $sql="select * from vu where pseudo='$pseudo'";

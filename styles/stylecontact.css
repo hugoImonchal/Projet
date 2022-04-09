@@ -163,11 +163,12 @@ nav ul{
 }
 
 p{
-    background-color: aliceblue;
+    background-color:aliceblue;
     color:black;
     margin: auto;
     padding: 10px;
 	font-family: 'PT Sans', sans-serif;
+	opacity: 0.9;
 
 
 }

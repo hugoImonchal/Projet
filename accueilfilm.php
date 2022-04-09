@@ -79,12 +79,12 @@ ini_set('display_errors', 'on');
 				echo '<br>';
 				if($resultats->rowCount()>0){
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){
-						echo "<p class= 'film'>";
-                        echo "<a  href='film.php?IdFilm=" . $d['IdFilm'] . "'>" . $d['Titre'] . "</a>";
+					
 						
 		
-						echo   "<a href='film.php?IdFilm=".$d['IdFilm']."'> <img src= ".$d['Affiche']. " alt= 'image' >" ."<a/>";
-						echo "</p>";
+						echo   "<a  href='film.php?IdFilm=".$d['IdFilm']."'> <img src= ".$d['Affiche']. " alt= 'image' >" ."<a/>";
+						echo "<a id= 'cc' href='film.php?IdFilm=" . $d['IdFilm'] . "'>" . $d['Titre'] . "</a>";
+
   
 					}
 					$resultats->closeCursor();
@@ -92,9 +92,13 @@ ini_set('display_errors', 'on');
 				else {echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
 				$connect=null;}
 ?>
+<br>
+<br>
+<br>
+<br>
 <p>
 <a href="touslesfilms.php"> Voir tous les films </a></p>
-			
+<br><br><br>		
             </tbody>
 			</table>
 			</html>

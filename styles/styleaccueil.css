@@ -9,9 +9,17 @@
 
 html{
 	font-size: 62.5%;
-	
+	background-color:lightgrey;	
 	
 }
+
+#cc{
+	color: black;
+	font-size:2em;
+	font-weight: bold;
+}
+
+
 
 h1{
 	font-size:2.6rem;
@@ -73,7 +81,6 @@ nav ul{
 
 .fond{
 	min-height:90vh;
-	background: url("../images/rouge.jpg");
 	background-size: cover;
 	background-position:center;
 	color: black;
@@ -94,14 +101,15 @@ p a{
     font-family: 'Roboto', sans-serif;
     text-align: center;
     padding: 10px;
-    color:#878787
+    color:dimgray
 }    
 
 form{
     background-color: #f5f5f5;
     padding:40px 60px;
+	width: 500px;
     border-radius: 10px;
-    min-width: 300px;
+    /* min-width: 300px; */
 
 
 }
@@ -142,4 +150,14 @@ input[type="submit"]{
 
 .film a{
     color: black;
+}
+
+.image{
+	height: 200px;
+	width: 400px;
+	display: block;
+	margin: auto;
+	border-radius: 50%;
+
+
 }

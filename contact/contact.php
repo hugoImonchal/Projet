@@ -50,7 +50,7 @@
 	<div class="information-bar">
 
 		<ul id= "pro">
-			<li class= "active"> Présentation projet</li>
+			<li > Présentation projet</li>
 			<li ><a href="contacteznous.php">Contactez-nous  </a></li>
 
 		</ul>
@@ -69,9 +69,10 @@
 </div>
 
 
+    <p>Lors d’un dimanche pluvieux, lorsqu’on est réuni en famille, ou entre amis... Il existe 1 001 raisons de regarder un film, 
+		et ceci est le quotidien d’une grande majorité de Français.</p>
     
-    <p>Nous sommes trois étudiants en troisième année de licence MIASHS; Victoire, Hugo et Lamyae.
-        Nous avons crée ce site dans le cadre de notre projet annuel.</p>
+		<p>C'est pourquoi nous avons décider, Victoire, Hugo et Lamyae, trois étudiants en troisième année de licence MIASHS, de créer ce site dans le cadre de notre projet annuel.</p>
     
     <p>
         Notre site a pour objectif de vous aider à trouver le film ainsi que la plateforme de streaming sur lequel 

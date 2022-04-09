@@ -6,7 +6,7 @@ ini_set('display_errors', 'on');
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/stylegenre.css" type="text/css" media="screen" />
 
 <meta http-equiv="Content-Type"
 content="text/html; charset=UTF-8" />
@@ -64,9 +64,12 @@ content="text/html; charset=UTF-8" />
                  
                 $repas = $bdd->query("select * from film where IdFilm='".$mata['IdFilm']."' ");
                     while ($matas =$repas->fetch())
-                    {echo '<br>';
-                    echo "<li><a class='film' href='film.php?IdFilm=" . $matas['IdFilm'] . "'>" . $matas['Titre'] . "</a></li>";
-                }
+                    {
+					echo "<ul class= 'bjr'>";
+                    echo "<li><a  href='film.php?IdFilm=" . $matas['IdFilm'] . "'>" . $matas['Titre'] . "</a></li>";
+					
+					echo '</ul>';
+				}
                  }
                
 			

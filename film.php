@@ -4,7 +4,7 @@ sur le film choisi (plateformes, genre, dates...)-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/stylefilms.css" type="text/css" media="screen" />
 
 <meta http-equiv="Content-Type"
 content="text/html; charset=UTF-8" />
@@ -84,43 +84,54 @@ function getvu($id_film,$pseudo){
 			{
 				echo "<h1>". $mat['Titre']."</h1>"."<br/>" ;
 				echo   "<img class='image' src= ".$mat['Affiche']. " alt= 'image' " ."/>";
-
+				echo '<br>';
+				echo '<br>';
+				echo '<br>';
+				echo "<ul class= 'bjr'>";
+				echo "<li >Synopsis : ".$mat['description']."</li><br/>"; 	
+				echo "<li >Date sortie du film : ".$mat['annee']."</li><br/>";
+				echo "<li >Note TMDB : ".$mat['Note_TMDB']."</li><br/>";
+				
 				$repa = $bdd->query("select * from etre_disponible where IdFilm=$id ");
-			
+				echo '</ul>';
+				echo "<ul class= 'bjr'>";
+				echo "<li>Film accessible sur : </li>";
+
 				while ($mata =$repa->fetch()) 
 			{	
 				$plat=$mata['Nom_plat'];
-				echo "<li>Film accessible sur : ";
-				echo "<a href='plateforme.php?Nom_plat=" . $mata['Nom_plat'] . "'>" . $mata['Nom_plat'] . "</a></li>";
+				 
+				echo "<li><span><a href='plateforme.php?Nom_plat=" . $mata['Nom_plat'] . "'>" . $mata['Nom_plat'] . "</a></span></li>";
+		}			
+
+			$repas = $bdd->query("select * from etre where IdFilm=$id ");
+			echo '</ul>';
+			echo "<ul class = 'bjr'>";
+			echo "<li> Genre : </li>";
+			while ($matas =$repas->fetch()) 
+			
+			{	
+				$genre=$matas['Nom_genre'];
+				
+				echo "<li><span><a href='genre.php?Nom_genre=" . $genre . "'>" . $genre. "</a></span></li>";}
 				
 
-			echo '<br>';}
-			$repas = $bdd->query("select * from etre where IdFilm=$id ");
-			
-			echo "<li>Genre : ";
-			while ($matas =$repas->fetch()) 
-			{	$genre=$matas['Nom_genre'];
-				echo "<a href='genre.php?Nom_genre=" . $genre . "'>" . $genre. "<br></a></li>";}
-				
-					
-				echo "<li>Date sortie du film : ".$mat['annee']."</li><br/>";
-				echo "<li>Note TMDB : ".$mat['Note_TMDB']."</li><br/>";
-				echo "<li>Synopsis : ".$mat['description']."</li><br/>"; 
+
 				if(isset($_SESSION['pseudo'])){
 					$pseudo=$_SESSION['pseudo'];
-					echo "Votre note : ".getnote($id,$pseudo)."<br/>";
-					echo '<a href="note.php?id='.$id.'"> Notez </a> le film ';
+					echo "<li>Votre note : ".getnote($id,$pseudo)."</li>";
+					echo '<li><span><a href="note.php?id='.$id.'"> Notez </span></a> le film </li>';
 					echo '<br>';
 					$vu=getvu($id,$pseudo);
 					if($vu==0){
-						echo "Vous n'avez pas vu ce film  :";
+						echo "<li>Vous n'avez pas vu ce film  :";
 					}
-					else{echo "Vous avez vu ce film  :";}
-					echo '<a href="vu.php?id='.$id.'"> modifier </a>';
+					else{echo "<li>Vous avez vu ce film  :";}
+					echo '<span><a href="vu.php?id='.$id.'"> modifier </a></span></li>';
 				}
 			
 			}
-
+				echo '</ul>';
 			// if (isset($_SESSION['utili'])) {
 			// 	$idd = $_SESSION['IdFilm'];
 			// 	$pseudoo = $_SESSION['pseudo'];
@@ -154,7 +165,6 @@ function getvu($id_film,$pseudo){
 				<br><br>
 
 			<?php	if(isset($_SESSION['utili'])){
-			 echo "<h2>Commentaires:</h2>";
 			 echo '
 <form method= "POST" >
 <textarea name="commentaire" placeholder="Votre commentaire..." ></textarea>

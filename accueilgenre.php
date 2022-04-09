@@ -12,7 +12,7 @@ ini_set('display_errors', 'on');
 
 <html>
 <head>
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/stylegenre.css" type="text/css" media="screen" />
         <meta http-equiv="Content-Type"content="text/html; charset=UTF-8" />
         <title>Accueil</title>
         <header class="main">	
@@ -49,10 +49,11 @@ ini_set('display_errors', 'on');
     <br>
     <br>
 </head>
+<p>
 <a href="accueilfilm.php"> Recherche par film</a>
 <br>
 <a href="acceuil.php"> Recherche par plateformes</a>
-
+</p>
 <?php include('data.php');
 	?>
 	<form method='post'>
@@ -79,9 +80,10 @@ ini_set('display_errors', 'on');
 				echo '<br>';
 				if($resultats->rowCount()>0){
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){
-				
-                        echo "<a href='genre.php?Nom_genre=" . $d['Nom_genre'] . "'>" .  $d['Nom_genre'] . "</a>";
-						echo '<br>';
+						echo "<ul class= 'bjr'>";
+
+                        echo "<li><a href='genre.php?Nom_genre=" . $d['Nom_genre'] . "'>" .  $d['Nom_genre'] . "</a></li>";
+						echo '</ul>';
 						//echo '<br>';
   
 					}
@@ -90,6 +92,11 @@ ini_set('display_errors', 'on');
 				else {echo '<tr><td colspan=4>aucun résultat trouvé</td></tr>'.
 				$connect=null;}
 ?>
+
+<br>
+<br>
+<br>
+<br>
 			
             </tbody>
 			</table>
