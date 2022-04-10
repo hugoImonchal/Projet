@@ -9,7 +9,11 @@ content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="styles/styleprofil.css" type="text/css" media="screen" />
 
 <title>Profil</title>
-
+<style>
+li{
+	z-index: 10;
+}
+</style>
 </head>
 
 <body>
@@ -95,7 +99,8 @@ function getnote($id_film,$pseudo){
 	<div class="information-bar">
 
 		<ul id= "pro">
-			<li ><a href="profil.php"> Mon Profil</a></li>
+			<li >          </li>
+			<li ><a href='index.php'> Mon Profil</a></li>
 			<li class= "active"><a href="mesfilms.php">Mes films  </a> </li>
 			<li ><a href="mesplateformes.php">Mes plateformes de streaming  </a></li>
 

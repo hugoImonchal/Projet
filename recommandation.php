@@ -38,6 +38,21 @@ function getAllPseudo(){
     return $array;
 
 }
+//cf getAllPseudo
+//Ne retoune que les utilisateurs ayant noté au moins un film
+//Bien plus pertinent, limite les calculs inutils.
+function getAllPseudo_filtred(){
+	$bdd = getBD();
+	$rep = $bdd->query("select distinct pseudo from noter");
+	$array= [];
+	while ($mat =$rep->fetch()) 
+	{
+		$array[]=$mat['pseudo'];
+    }
+	$rep ->closeCursor();
+    return $array;
+}
+
 //Cette fonction retourne la liste de tous les films du site 
 function getAllFilm(){
 	$bdd = getBD();
@@ -70,6 +85,32 @@ function seen($id_film,$pseudo){
 function user_film_vector($pseudo){
 	$bdd = getBD();
 	$rep = $bdd->query("select IdFilm from film");
+	$array= [];
+	while ($mat =$rep->fetch()) 
+	{
+		$id=$mat['IdFilm'];
+		$array[$id]=0;
+    }
+	$rep ->closeCursor();
+	$rep = $bdd->query("select * from noter where pseudo='$pseudo'");
+	while ($mat =$rep->fetch()) 
+	{
+		$id=$mat['IdFilm'];
+		$note=(int)$mat['Note'];
+		$array[$id]=$note;
+    }
+	$rep ->closeCursor();
+
+    return $array;
+
+}
+
+//Cf user_film_vector
+//Ne retoune que les films pour lesquels il existe au moins une note.
+//Bien plus pertinent, limite les calculs inutils.
+function user_film_vector_filtred($pseudo){
+	$bdd = getBD();
+	$rep = $bdd->query("select distinct IdFilm from noter");
 	$array= [];
 	while ($mat =$rep->fetch()) 
 	{
@@ -124,9 +165,34 @@ function centre_reduit ($tableau){
 	return $tab;
 }
 
-//Cette fonction prend en parametre un tableau et calcul puis retourne 
-//la matrice de correlation de pearson de ce tableau
+//Cette fonction prend en parametre un tableau dim=2 et calcul puis retourne 
+//la matrice des,coef de pearson au carre des paires de clés (de lignes du tableau)
 function similarite($tab){
+	$mat=[];
+	foreach($tab as $k1 => $v1 ){
+		$som1=0;
+		foreach($v1 as $id=>$note){
+			$som1+=$note*$note;
+		}
+
+		foreach($tab as $k2 => $v2){
+			$som2=0;
+			$som1x2=0;
+			foreach($v2 as $id=>$note){
+				$som2+=$note*$note;
+				$som1x2+=$v1[$id]*$note;
+			}
+			$mat[$k1][$k2]=pow($som1x2/(sqrt($som1)*sqrt($som2)),2);
+
+		}
+		
+	}
+	return $mat;
+}
+
+//Cette fonction prend en parametre un tableau et calcul puis retourne 
+//la matrice (de correlation) des coef de pearson des paires de clés (de lignes du tableau)
+function correlation($tab){
 	$mat=[];
 	foreach($tab as $k1 => $v1 ){
 		$som1=0;
@@ -147,8 +213,9 @@ function similarite($tab){
 		
 	}
 	return $mat;
-
 }
+
+
 ?>
 
 	
@@ -156,28 +223,33 @@ function similarite($tab){
 	if(isset($_SESSION['utili']))
 	{ 
 		$pseudo=$_SESSION['pseudo'];
-		$list_uti=getAllPseudo();
+		$list_uti=getAllPseudo_filtred();
 		var_dump($list_uti);
 		// $list_film=getAllFilm();
 		// var_dump($list_film);
-		$u_f_vect=user_film_vector($pseudo);
+		$u_f_vect=user_film_vector_filtred($pseudo);
 		// var_dump($u_f_vect);
 
 		//tableau pseudo X IdFilm contenant pour chaque pseudo la note du film associé.
 		$tableau=[];
 		foreach($list_uti as $key => $value){
-			$tableau[$value]=user_film_vector($value);
+			$tableau[$value]=user_film_vector_filtred($value);
 		}
 		//var_dump($tableau);
 
 		//tableau simplifié avec 2 utilisateurs.
-		$tab_simplifie=[];
-		$tab_simplifie[$pseudo]=user_film_vector($pseudo);
-		$tab_simplifie['jean']=user_film_vector('jean');
-		$tableau_centre_reduit=centre_reduit ($tab_simplifie);
+		// $tab_simplifie=[];
+		// $tab_simplifie[$pseudo]=user_film_vector_filtred($pseudo);
+		// $tab_simplifie['jean']=user_film_vector_filtred('jean');
+		// $tableau_centre_reduit=centre_reduit ($tab_simplifie);
 		//var_dump($tableau_centre_reduit);
+
+
+		$tableau_centre_reduit=centre_reduit ($tableau);
+
+//Recommandation user-based
 		$simil=similarite($tableau_centre_reduit);
-		var_dump($simil);
+		// var_dump($simil);
 
 		//Determination des utilisateurs les plus proches
 		$vect_user=$simil[$pseudo];
@@ -192,10 +264,10 @@ function similarite($tab){
 		echo '<p>'.$pseudo.'</p>';
 		echo '<p>Utilisateur qui vous ressemble le plus: '.$similar_user.' coef: '.$max.'</p>';
 		$recom=[];
-		//var_dump($tab_simplifie[$similar_user]);
+		//var_dump($tableau[$similar_user]);
 
 		//maintenant on recommande les films que cet utilisateur a aimé.
-		foreach($tab_simplifie[$similar_user] as $id=>$note){
+		foreach($tableau[$similar_user] as $id=>$note){
 			if($note>=4){
 				if((int)seen($id,$pesudo)==0){
 					$recom[$id]=$note;
@@ -203,11 +275,53 @@ function similarite($tab){
 			}	
 		}
 		uasort($recom, 'compare');
+		echo "<table><tr><th>titre</th><th>lien</th></tr>";
+
 		foreach($recom as $id=>$note){
 			$titre=getfilm($id);
-			echo $titre;
-			echo "<a href='film.php?IdFilm=".$id."'>".$titre." </a>";
+			echo "<tr><td>$titre</td>";
+			echo "<td><a href='film.php?IdFilm=".$id."'>".$titre." </a></td></tr>";
 		}
+		echo "</table>";
+
+
+//Recommandation item-based
+//$u_f_vect
+	$transpose=[];
+	foreach($u_f_vect as $id=>$note){
+		$ligne=[];
+		foreach($list_uti as $key=>$ps){
+			// $f_vect=user_film_vector_filtred($ps);
+			// $n=$f_vect[$id];
+			$n=$tableau_centre_reduit[$ps][$id];
+			$ligne[$ps]=$n;
+		}
+		$transpose[$id]=$ligne;	
+	}
+	//var_dump($transpose);
+
+		// echo "<br><br>";
+		// var_dump($tableau_centre_reduit);
+		$corr=correlation($transpose);
+		// echo'<br>';
+		// var_dump($corr);
+		$film_simil=[];
+		foreach($u_f_vect as $id=>$note){
+			$ligne=[];
+			foreach($corr as $key=>$value){
+				(float)$score=$value[$id]*((float)$note-2.5);
+				$ligne[$key]=$score;				
+			}
+			$film_simil[$id]=$ligne;
+		}	
+
+		echo'<br>';
+
+		//var_dump($u_f_vect);
+		var_dump($film_simil);
+		echo "<br>";
+		//$recom_film_sort=uasort(var_dump($film_simil);, 'compare');
+
 
 	}
 	else{echo "<p>Vous n'etes pas connecgte</p>";}
