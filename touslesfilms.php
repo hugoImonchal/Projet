@@ -50,8 +50,10 @@ ini_set('display_errors', 'on');
     <br>
 </head>
     <body>
+	<p>
 	<a href="acceuil.php"> Recheche par plateformes</a><br>
 <a href="accueilgenre.php"> Recherche par genre</a> <br>
+</p>
 
 	<?php include('data.php');
 	?>
@@ -80,10 +82,9 @@ ini_set('display_errors', 'on');
 				if($resultats->rowCount()>0){
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){
 				
-                        echo "<a class='film' href='film.php?IdFilm=" . $d['IdFilm'] . "'>" . $d['Titre'] . "</a>";
-						echo '<br>';
-						echo   "<a href='film.php?IdFilm=".$d['IdFilm']."'> <img src= ".$d['Affiche']. " alt= 'image' >" ."<a/>";
-						//echo '<br>';
+						echo   "<a  href='film.php?IdFilm=".$d['IdFilm']."'> <img src= ".$d['Affiche']. " alt= 'image' >" ."<a/>";
+						echo "<a id= 'cc' href='film.php?IdFilm=" . $d['IdFilm'] . "'>" . $d['Titre'] . "</a>";
+
   
 					}
 					$resultats->closeCursor();
