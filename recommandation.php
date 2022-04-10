@@ -75,7 +75,6 @@ function seen($id_film,$pseudo){
 		$vu=(int)$mat['id_vu'];
     }
 	$rep ->closeCursor();
-
 	return (int)$vu;
 }
 
@@ -224,7 +223,7 @@ function correlation($tab){
 	{ 
 		$pseudo=$_SESSION['pseudo'];
 		$list_uti=getAllPseudo_filtred();
-		var_dump($list_uti);
+		//var_dump($list_uti);
 		// $list_film=getAllFilm();
 		// var_dump($list_film);
 		$u_f_vect=user_film_vector_filtred($pseudo);
@@ -269,12 +268,14 @@ function correlation($tab){
 		//maintenant on recommande les films que cet utilisateur a aimé.
 		foreach($tableau[$similar_user] as $id=>$note){
 			if($note>=4){
-				if((int)seen($id,$pesudo)==0){
+				if((int)seen($id,$pseudo)==0){
 					$recom[$id]=$note;
 				}
 			}	
 		}
 		uasort($recom, 'compare');
+		echo"<p>recommandation par comparaison des utilisateurs</p>";
+
 		echo "<table><tr><th>titre</th><th>lien</th></tr>";
 
 		foreach($recom as $id=>$note){
@@ -315,13 +316,35 @@ function correlation($tab){
 			$film_simil[$id]=$ligne;
 		}	
 
-		echo'<br>';
+		//var_dump($film_simil);
+		$vect_recom=$u_f_vect;
+	foreach($vect_recom as $key => $value ){
+		$value=0;
+	}
 
-		//var_dump($u_f_vect);
-		var_dump($film_simil);
-		echo "<br>";
-		//$recom_film_sort=uasort(var_dump($film_simil);, 'compare');
+	foreach($film_simil as $key=>$value){
+		foreach($value as $id=>$score){
+			$vect_recom[$id]+=$score;
+		}
+	}
+	arsort($vect_recom);
 
+	$pseudo=$_SESSION['pseudo'];
+	foreach($vect_recom as $id=>$score){
+		if((int)seen($id,$pseudo)!=0){
+			unset($vect_recom[$id]);
+		}
+	}
+
+	echo"<p>recommandation par comparaison des films</p>";
+	echo "<table><tr><th>titre</th><th>lien</th></tr>";
+	
+	foreach($vect_recom as $id=>$note){
+		$titre=getfilm($id);
+		echo "<tr><td>$titre</td>";
+		echo "<td><a href='film.php?IdFilm=".$id."'>".$titre." </a></td></tr>";
+	}
+	echo "</table>";
 
 	}
 	else{echo "<p>Vous n'etes pas connecgte</p>";}
