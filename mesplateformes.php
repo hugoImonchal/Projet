@@ -99,12 +99,11 @@ content="text/html; charset=UTF-8" />
 		echo "<ul class= 'plat'>";
 		while ($ligne = $rep ->fetch()) {
 			$plat=$ligne['Nom_plat'];
-			echo "<li>{$plat} </li>";
-
+			echo "<li><a href='plateforme.php?Nom_plat=" . $d=$ligne['Nom_plat'] . "'>" .  $ligne['Nom_plat'] . "</a></li>";
 		}
 		echo "</ul>";
 		echo "<br>";
-		echo "<p> <a href='plat.php'>Ajouter ou supprimer </a> une platforme</p> ";
+		echo "<p class= 'plat'> <a href='plat.php'>Ajouter ou supprimer  une platforme</a></p> ";
 
 	}
 ?>

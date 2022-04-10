@@ -175,3 +175,11 @@ p{
 li{
 	z-index: 10;
 }
+
+#mail{
+	background-color: aliceblue;
+	font-size: 2em;
+	font-weight: bold;
+
+
+}

@@ -70,14 +70,7 @@
 
 
     
-    <p>Nous sommes trois étudiants en troisième année de licence MIASHS; Victoire, Hugo et Lamyae.
-        Nous avons crée ce site dans le cadre de notre projet annuel.</p>
-    
-    <p>
-        Notre site a pour objectif de vous aider à trouver le film ainsi que la plateforme de streaming sur lequel 
-        il se trouve se rapprochant le plus de vos goûts.
-    </p>
-    
+    <p id = 'mail'> Whereto2watch@gmail.com</p>
    
 
     </body>
