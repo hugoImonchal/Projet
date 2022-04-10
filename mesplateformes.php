@@ -17,19 +17,7 @@ content="text/html; charset=UTF-8" />
 
 <?php session_start(); ?>
 
-	<?php
-	if(isset($_SESSION['utili']))
-	{ 
-		echo 'Bonjour' .' ';
-		 echo $_SESSION['nom'] .' ';
-		 echo $_SESSION['prenom'] .'<br/>';
-	}
-	else 
-	{  
-		echo 'Vous nêtes pas connecté(e)'.'<br/>';
-		
-	}
-	?> 
+	
 	<header class="main">	
 		<nav>
 			<ul class="menu">
