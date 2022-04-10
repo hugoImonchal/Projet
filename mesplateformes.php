@@ -69,6 +69,8 @@ content="text/html; charset=UTF-8" />
 			<li ><a href="profil.php"> Mon Profil</a></li>
 			<li ><a href="mesfilms.php">Mes films  </a> </li>
 			<li class= "active"><a href="mesplateformes.php">Mes plateformes de streaming  </a></li>
+			<li><a href="recommandation.php">Recommandation </a></li>
+
 
 		</ul>
 

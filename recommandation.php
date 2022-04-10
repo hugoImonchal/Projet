@@ -1,14 +1,20 @@
 <!-- Cette page permet de recommander une liste de film pour un utilisateur -->
-<!DOCTYPE html>
 <?php session_start(); ?>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta http-equiv="Content-Type"
 content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
-<title>Profil</title>
-</head>
 
+<link rel="stylesheet" href="styles/styleprofil.css" type="text/css" media="screen" />
+
+<title>Profil</title>
+<style>
+li{
+	z-index: 10;
+}
+</style>
+</head>
 <body>
 
 <?php include("php/bdd.php"); ?>
@@ -75,7 +81,6 @@ function seen($id_film,$pseudo){
 		$vu=(int)$mat['id_vu'];
     }
 	$rep ->closeCursor();
-
 	return (int)$vu;
 }
 
@@ -217,6 +222,78 @@ function correlation($tab){
 
 
 ?>
+<?php
+	if(isset($_SESSION['utili']))
+	{ 
+		echo 'Bonjour' .' ';
+		 echo $_SESSION['nom'] .' ';
+		 echo $_SESSION['prenom'] .'<br/>';
+	}
+	else 
+	{  
+		echo 'Vous nêtes pas connecté(e)'.'<br/>';
+		
+	}
+	?> 
+
+<header class="main">	
+		<nav>
+			<ul class="menu">
+			<li class= "list">
+				<a href="index.php">Where2Watch</a>
+				</li>
+				<li class= "list">
+				<a href="acceuil.php">Accueil</a>
+				</li>
+				<?php
+				if(isset($_SESSION['utili'])){
+					echo '<li class= "list"> <a href="deconnexion.php">Deconnexion </a> </li>';
+					echo '<li class= "list"><a href="profil.php"> Profil </a> </li>';
+				}
+				else{
+				echo '<li class= "list"> <a href="connexion.php"> Connexion </a> </li> ';
+				echo '<li class= "list"> <a href="FormulaireInscription.php"> Inscription </a> </li>';
+				} ?>
+				
+				<li class= "list">
+				<a href="contact/contact.php">Contact</a>
+				</li>
+				
+			</ul>
+		</nav>
+	</header>
+
+<section class= "fond">
+	
+
+
+
+<div class= "container">
+	<div class="information-bar">
+
+		<ul id= "pro">
+			
+			<li ><a href='profil.php'> Mon Profil</a></li>
+			<li ><a href="mesfilms.php">Mes films  </a> </li>
+			<li ><a href="mesplateformes.php">Mes plateformes de streaming  </a></li>
+			<li class= "active" ><a href="recommandation.php">Recommandation </a></li>
+
+		</ul>
+
+		<div class="profile">
+			<img src="images/chiot.jpg" alt="image de profil">
+<p class="name">
+<?php echo $_SESSION['nom'];
+	echo "   ";
+	echo $_SESSION['prenom'];
+ ?> </p>
+
+		</div>
+
+
+	</div>
+
+</div>
 
 	
     <?php
@@ -224,7 +301,7 @@ function correlation($tab){
 	{ 
 		$pseudo=$_SESSION['pseudo'];
 		$list_uti=getAllPseudo_filtred();
-		var_dump($list_uti);
+		//var_dump($list_uti);
 		// $list_film=getAllFilm();
 		// var_dump($list_film);
 		$u_f_vect=user_film_vector_filtred($pseudo);
@@ -261,20 +338,21 @@ function correlation($tab){
 				$similar_user=$key;
 			}
 		}
-		echo '<p>'.$pseudo.'</p>';
-		echo '<p>Utilisateur qui vous ressemble le plus: '.$similar_user.' coef: '.$max.'</p>';
+		echo '<p>Utilisateur qui vous ressemble le plus: '.$similar_user.'</p>';
 		$recom=[];
 		//var_dump($tableau[$similar_user]);
 
 		//maintenant on recommande les films que cet utilisateur a aimé.
 		foreach($tableau[$similar_user] as $id=>$note){
 			if($note>=4){
-				if((int)seen($id,$pesudo)==0){
+				if((int)seen($id,$pseudo)==0){
 					$recom[$id]=$note;
 				}
 			}	
 		}
 		uasort($recom, 'compare');
+		echo"<p>recommandation par comparaison des utilisateurs</p>";
+
 		echo "<table><tr><th>titre</th><th>lien</th></tr>";
 
 		foreach($recom as $id=>$note){
@@ -315,13 +393,35 @@ function correlation($tab){
 			$film_simil[$id]=$ligne;
 		}	
 
-		echo'<br>';
+		//var_dump($film_simil);
+		$vect_recom=$u_f_vect;
+	foreach($vect_recom as $key => $value ){
+		$value=0;
+	}
 
-		//var_dump($u_f_vect);
-		var_dump($film_simil);
-		echo "<br>";
-		//$recom_film_sort=uasort(var_dump($film_simil);, 'compare');
+	foreach($film_simil as $key=>$value){
+		foreach($value as $id=>$score){
+			$vect_recom[$id]+=$score;
+		}
+	}
+	arsort($vect_recom);
 
+	$pseudo=$_SESSION['pseudo'];
+	foreach($vect_recom as $id=>$score){
+		if((int)seen($id,$pseudo)!=0){
+			unset($vect_recom[$id]);
+		}
+	}
+
+	echo"<p>recommandation par comparaison des films</p>";
+	echo "<table><tr><th>titre</th><th>lien</th></tr>";
+	
+	foreach($vect_recom as $id=>$note){
+		$titre=getfilm($id);
+		echo "<tr><td>$titre</td>";
+		echo "<td><a href='film.php?IdFilm=".$id."'>".$titre." </a></td></tr>";
+	}
+	echo "</table>";
 
 	}
 	else{echo "<p>Vous n'etes pas connecgte</p>";}

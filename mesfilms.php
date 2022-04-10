@@ -100,9 +100,11 @@ function getnote($id_film,$pseudo){
 
 		<ul id= "pro">
 			<li >          </li>
-			<li ><a href='index.php'> Mon Profil</a></li>
+			<li ><a href='profil.php'> Mon Profil</a></li>
 			<li class= "active"><a href="mesfilms.php">Mes films  </a> </li>
 			<li ><a href="mesplateformes.php">Mes plateformes de streaming  </a></li>
+			<li><a href="recommandation.php">Recommandation </a></li>
+
 
 		</ul>
 
