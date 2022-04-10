@@ -1,14 +1,20 @@
 <!-- Cette page permet de recommander une liste de film pour un utilisateur -->
-<!DOCTYPE html>
 <?php session_start(); ?>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta http-equiv="Content-Type"
 content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
-<title>Profil</title>
-</head>
 
+<link rel="stylesheet" href="styles/styleprofil.css" type="text/css" media="screen" />
+
+<title>Profil</title>
+<style>
+li{
+	z-index: 10;
+}
+</style>
+</head>
 <body>
 
 <?php include("php/bdd.php"); ?>
@@ -216,6 +222,78 @@ function correlation($tab){
 
 
 ?>
+<?php
+	if(isset($_SESSION['utili']))
+	{ 
+		echo 'Bonjour' .' ';
+		 echo $_SESSION['nom'] .' ';
+		 echo $_SESSION['prenom'] .'<br/>';
+	}
+	else 
+	{  
+		echo 'Vous nêtes pas connecté(e)'.'<br/>';
+		
+	}
+	?> 
+
+<header class="main">	
+		<nav>
+			<ul class="menu">
+			<li class= "list">
+				<a href="index.php">Where2Watch</a>
+				</li>
+				<li class= "list">
+				<a href="acceuil.php">Accueil</a>
+				</li>
+				<?php
+				if(isset($_SESSION['utili'])){
+					echo '<li class= "list"> <a href="deconnexion.php">Deconnexion </a> </li>';
+					echo '<li class= "list"><a href="profil.php"> Profil </a> </li>';
+				}
+				else{
+				echo '<li class= "list"> <a href="connexion.php"> Connexion </a> </li> ';
+				echo '<li class= "list"> <a href="FormulaireInscription.php"> Inscription </a> </li>';
+				} ?>
+				
+				<li class= "list">
+				<a href="contact/contact.php">Contact</a>
+				</li>
+				
+			</ul>
+		</nav>
+	</header>
+
+<section class= "fond">
+	
+
+
+
+<div class= "container">
+	<div class="information-bar">
+
+		<ul id= "pro">
+			
+			<li ><a href='profil.php'> Mon Profil</a></li>
+			<li ><a href="mesfilms.php">Mes films  </a> </li>
+			<li ><a href="mesplateformes.php">Mes plateformes de streaming  </a></li>
+			<li class= "active" ><a href="recommandation.php">Recommandation </a></li>
+
+		</ul>
+
+		<div class="profile">
+			<img src="images/chiot.jpg" alt="image de profil">
+<p class="name">
+<?php echo $_SESSION['nom'];
+	echo "   ";
+	echo $_SESSION['prenom'];
+ ?> </p>
+
+		</div>
+
+
+	</div>
+
+</div>
 
 	
     <?php
@@ -260,8 +338,7 @@ function correlation($tab){
 				$similar_user=$key;
 			}
 		}
-		echo '<p>'.$pseudo.'</p>';
-		echo '<p>Utilisateur qui vous ressemble le plus: '.$similar_user.' coef: '.$max.'</p>';
+		echo '<p>Utilisateur qui vous ressemble le plus: '.$similar_user.'</p>';
 		$recom=[];
 		//var_dump($tableau[$similar_user]);
 
