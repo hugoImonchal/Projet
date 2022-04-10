@@ -13,6 +13,9 @@ content="text/html; charset=UTF-8" />
 li{
 	z-index: 10;
 }
+p{
+	color: black;
+}
 </style>
 </head>
 <body>

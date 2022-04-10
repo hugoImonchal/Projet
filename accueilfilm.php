@@ -65,17 +65,15 @@ ini_set('display_errors', 'on');
 			
 
 			<?php
-				$sql='select * from film LIMIT 50';
+				$sql='select * from film ';
 
 				$params=[];
 				if(isset($_POST['recherche_valeur'])){
-					$sql.=' where Titre like :Titre';
-	
 					$params[':Titre']="%".addcslashes($_POST['recherche_valeur'],'_')."%";
+					$sql.=' where Titre like "'.$params[':Titre'].'"';
 				}
-                
 				$resultats=$connect->prepare($sql);
-				$resultats->execute($params);
+				$resultats->execute();
 				echo '<br>';
 				if($resultats->rowCount()>0){
 					while($d=$resultats->fetch(PDO::FETCH_ASSOC)){

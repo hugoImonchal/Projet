@@ -21,11 +21,11 @@ $mdp=$_POST['mdp'];
 if($pseudo=='' || $mdp=='')
 {
    echo '<meta http-equiv="refresh" content="2;url=connexion.php"/>'; 
-   echo 'veuillez remplir tous les champs';
+   //echo 'veuillez remplir tous les champs';
 }
 if( $ligne['pseudo']!=$pseudo || $ligne['Mdp']!=$mdp )
 {
- echo 'Mauvais identifiant ou mauvais mot de passe';
+ //echo 'Mauvais identifiant ou mauvais mot de passe';
  echo '<meta http-equiv="refresh" content="2;url=connexion.php"/>'; 
 
 }
