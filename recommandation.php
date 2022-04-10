@@ -222,19 +222,7 @@ function correlation($tab){
 
 
 ?>
-<?php
-	if(isset($_SESSION['utili']))
-	{ 
-		echo 'Bonjour' .' ';
-		 echo $_SESSION['nom'] .' ';
-		 echo $_SESSION['prenom'] .'<br/>';
-	}
-	else 
-	{  
-		echo 'Vous nêtes pas connecté(e)'.'<br/>';
-		
-	}
-	?> 
+
 
 <header class="main">	
 		<nav>
