@@ -164,17 +164,6 @@ function getvu($id_film,$pseudo){
 
 				<br><br>
 
-			<?php	if(isset($_SESSION['utili'])){
-			 echo '
-<form method= "POST" >
-<textarea name="commentaire" placeholder="Votre commentaire..." ></textarea>
-<input type="submit" name="poster" value="poster mon commentaire" />
-</form>';
 			
-
-}
-
-	 ?>
-
 </body>
 </html>

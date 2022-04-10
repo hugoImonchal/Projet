@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type"
 content="text/html; charset=UTF-8" />
 
-<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="styles/stylegenre.css" type="text/css" media="screen" />
 
 <title>Plateforme</title>
 
@@ -64,7 +64,7 @@ content="text/html; charset=UTF-8" />
 	{ 
 		$pseudo=$_SESSION['pseudo'];
         $bdd=getBD();
-        echo "<p> Vos platformes de streaming: </p>";
+        echo "<p class='salut'> Vos platformes de streaming: </p>";
 		$sql="select * from etre_inscrit where pseudo='$pseudo'";
 		$rep=$bdd->query($sql);
 		echo "<ul>";
@@ -75,7 +75,7 @@ content="text/html; charset=UTF-8" />
 		}
 		echo "</ul>";
 
-        echo "<p>Platerformes disponibles sur notre site: </p>";
+        echo "<p class= 'salut' >Platerformes disponibles sur notre site: </p>";
         $sql="select Nom_plat from plateforme ";
 		$rep=$bdd->query($sql);
 		echo "<ul>";
